@@ -1,0 +1,27 @@
+(dp1
+S'input'
+p2
+(dp3
+S'motion'
+p4
+(lp5
+I1
+aI2
+aI20
+aI37
+aI38
+assS'output'
+p6
+(dp7
+S'encoded'
+p8
+(lp9
+I160
+aI38
+aI361
+aI1279
+asS'original'
+p10
+S'state multiculturalism has failed'
+p11
+ss.
