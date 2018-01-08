@@ -58,8 +58,8 @@ class DataGenerator(object):
         Generates data of batch_size samples
         '''
         # Generate data
-        the_motion_input = np.zeros((self.batch_size, self.motion_length), dtype=np.int32)
-        the_labels = np.zeros((self.batch_size, self.claim_length, self.lexicon_count), dtype=np.float32)
+        the_motion_input = np.ones((self.batch_size, self.motion_length), dtype=np.int32)*2 # <PAD> = 2
+        the_labels = np.ones((self.batch_size, self.claim_length, self.lexicon_count), dtype=np.float32)*2 # <PAD> = 2
         for idx, ID in enumerate(list_IDs_temp):
             input_output = pickle.load(open(os.path.join(self.data_dir, os.path.basename('encoded_input_output') + '_' + str(ID+1) + '.pkl'), 'rb'))
 
@@ -124,8 +124,8 @@ class FakeDataGenerator(object):
         Generates data of batch_size samples
         '''
         # Generate data
-        claims = np.zeros((self.batch_size*2, self.claim_length, self.lexicon_count), dtype=np.float32)
-        labels = np.zeros((self.batch_size*2), dtype=np.float32)
+        claims = np.ones((self.batch_size*2, self.claim_length, self.lexicon_count), dtype=np.float32)*2
+        labels = np.ones((self.batch_size*2), dtype=np.float32)*2
         idx = 0
         for ID in list_IDs_temp:
             input_output = pickle.load(open(os.path.join(self.data_dir, os.path.basename('encoded_input_output') + '_' + str(ID+1) + '.pkl'), 'rb'))

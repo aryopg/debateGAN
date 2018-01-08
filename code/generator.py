@@ -179,7 +179,6 @@ class GeneratorEncDecTeacherForcing(nn.Module):
 
         if use_teacher_forcing:
             target = target_output.permute(1,0)
-            print target
             for i in range(self.claim_length):
                 decoder_hidden = self.decoder_gru_cell(decoder_output, decoder_hidden)
                 decoder_output_full[i, :, :] = decoder_hidden

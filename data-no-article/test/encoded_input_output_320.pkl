@@ -5,9 +5,7 @@ p2
 S'motion'
 p4
 (lp5
-I1
-aI2
-aI3
+I3
 aI4
 aI5
 aI6
@@ -20,16 +18,18 @@ aI12
 aI13
 aI14
 aI15
+aI16
+aI17
 assS'output'
 p6
 (dp7
 S'encoded'
 p8
 (lp9
-I450
-aI197
-aI451
-aI452
+I452
+aI199
+aI453
+aI454
 asS'original'
 p10
 S'content-based regulations are presumptively invalid'

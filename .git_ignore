@@ -1,2 +1,5 @@
 *.pyc
-
+code/helpers/datagenerator_emb.py
+code/emb_wgan.py
+dataset/
+preprocess_no_article.py

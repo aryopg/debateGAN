@@ -5,9 +5,7 @@ p2
 S'motion'
 p4
 (lp5
-I1
-aI2
-aI3
+I3
 aI4
 aI5
 aI6
@@ -20,18 +18,20 @@ aI12
 aI13
 aI14
 aI15
+aI16
+aI17
 assS'output'
 p6
 (dp7
 S'encoded'
 p8
 (lp9
-I8
-aI9
-aI10
-aI367
-aI273
-aI274
+I10
+aI11
+aI12
+aI369
+aI275
+aI276
 asS'original'
 p10
 S"violent video games can increase children's aggression"

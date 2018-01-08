@@ -5,9 +5,7 @@ p2
 S'motion'
 p4
 (lp5
-I1
-aI2
-aI3
+I3
 aI4
 aI5
 aI6
@@ -20,17 +18,19 @@ aI12
 aI13
 aI14
 aI15
+aI16
+aI17
 assS'output'
 p6
 (dp7
 S'encoded'
 p8
 (lp9
-I453
-aI267
-aI10
-aI197
-aI454
+I455
+aI269
+aI12
+aI199
+aI456
 asS'original'
 p10
 S'content-based restrictions on games are unconstitutional'

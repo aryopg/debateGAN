@@ -347,17 +347,17 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 # train with real
                 f_real, D_real = netD(real_claim_v)
                 D_real = D_real.mean()
-                D_real.backward(mone)
+                D_real.backward(mone, retain_graph=True)
 
                 # train with motion
                 fake = autograd.Variable(netG(real_motion_v, real_claim_v, 0.0).data)
                 inputv = fake
                 f_fake, D_fake = netD(inputv)
                 D_fake = D_fake.mean()
-                D_fake.backward(one)
+                D_fake.backward(one, retain_graph=True)
 
-                D_jsd = jsdloss(batch_size, f_fake, f_real)
-                D_jsd.backward(one)
+                D_jsd = jsdloss(batch_size, f_fake, f_real).mean()
+                D_jsd.backward(mone)
 
                 # train with gradient penalty
                 gradient_penalty = calc_gradient_penalty(batch_size, lam, netD, real_claim_v.data, fake.data)# + cosine(f_fake, f_real).mean()
@@ -367,8 +367,6 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 D_cost = D_fake - D_real + gradient_penalty
                 Wasserstein_D = D_real - D_fake
                 optimizerD.step()
-                break
-            break
 
         ############################
         # (2) Update G network
@@ -403,10 +401,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
             f_real, _ = netD(real_claim_D_v)
 
             # G_loss = G.mean()
-            G_loss = G.mean() + jsd(batch_size, f_fake, f_real)
-
-            # G_loss_3 = jsdloss(batch_size, f_real, f_fake) + G.mean()
-            # G_loss_3 = jsdloss(batch_size, f_real, f_fake) + G_cos_dist
+            G_loss = G.mean() + jsdloss(batch_size, f_fake, f_real).mean()
 
             G_loss.backward(mone)
             G_cost = -G_loss
