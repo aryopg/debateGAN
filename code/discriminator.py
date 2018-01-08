@@ -42,7 +42,7 @@ class Discriminator(nn.Module):
         # self.conv_3 = nn.Conv1d(hidden_dim, hidden_dim, 5)
         # self.pool3 = nn.AvgPool1d(2)
         # self.gru_1 = nn.GRU(vocab_size, hidden_dim, n_layers, dropout=0.5, batch_first=True, bidirectional=True)
-        self.fc_1 = nn.Linear(1500, 512)
+        self.fc_1 = nn.Linear(3600, 512)
         self.fc_2 = nn.Linear(512, 128)
         self.fc_out = nn.Linear(128, 1)
         self.sigmoid = nn.Sigmoid()
