@@ -1,0 +1,33 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI3
+aI2136
+aI7
+aI3
+aI2306
+aI7
+aI2390
+asS'ori'
+p6
+S'This house supports the one-child policy of the republic of China'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I9743
+aI52989
+aI63765
+asg6
+S'|- Mongols Altaic (Mongolic) 1 462 956 0 .25 1 965 766 0 .28 3 402 200 0 .34 4 806 849 0 .42 5 813 947 0 .46  .'
+p11
+ss.

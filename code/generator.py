@@ -182,7 +182,7 @@ class GeneratorEncDecTeacherForcing(nn.Module):
             for i in range(self.claim_length):
                 decoder_hidden = self.decoder_gru_cell(decoder_output, decoder_hidden)
                 decoder_output_full[i, :, :] = decoder_hidden
-                decoder_output = self.decoder_embeddings(target[i])  # Teacher forcing
+                decoder_output = self.decoder_embeddings(target[i-1])  # Teacher forcing
                 decoder_output = self.dropout(decoder_output)
 
         else:

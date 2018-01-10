@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I40
+aI1453
+aI16
+aI4959
+aI918
+aI14
+aI2202
+aI887
+aI4066
+aI5269
+aI63764
+asg6
+S'How do economic inequalities impact on relations among diverse communities ?'
+p11
+ss.

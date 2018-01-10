@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I7
+aI3
+aI2598
+aI1201
+aI3114
+aI41
+aI89
+aI15011
+aI3716
+aI63765
+asg6
+S'16 .2% of the population self identify as a visible minority  .'
+p11
+ss.

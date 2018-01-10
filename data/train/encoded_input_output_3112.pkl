@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI3807
+aI314
+aI3433
+asS'ori'
+p6
+S'This house would ban partial birth abortions'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI25527
+aI10119
+aI4991
+aI3740
+aI235
+aI3257
+aI2446
+aI63765
+asg6
+S'The Unitarian Universalist Church strongly supports abortion rights .'
+p11
+ss.

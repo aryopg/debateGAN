@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI262
+asS'ori'
+p6
+S'This house would ban boxing'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI1511
+aI1105
+aI864
+aI92
+aI727
+aI24
+aI89
+aI7915
+aI852
+aI7
+aI4803
+asg6
+S'the typical knock out which results in a sustained loss of consciousness'
+p11
+ss.

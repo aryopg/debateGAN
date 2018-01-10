@@ -1,0 +1,33 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI628
+asS'ori'
+p6
+S'This house would ban gambling'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I16361
+aI136
+aI2711
+aI3
+aI14718
+aI2605
+aI588
+aI63765
+asg6
+S'Matching more numbers  the payout goes up .'
+p11
+ss.

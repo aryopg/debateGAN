@@ -1,0 +1,33 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16756
+aI20435
+asS'ori'
+p6
+S'This house would criminalize blasphemy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I78
+aI24
+aI323
+aI15889
+aI84
+aI89
+aI8526
+aI63765
+asg6
+S'"But people in Europe shouldnt take a holier-than-thou attitude .'
+p11
+ss.

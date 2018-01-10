@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5284
+aI150
+aI3987
+asS'ori'
+p6
+S'This house would reintroduce national service'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I374
+aI123
+aI64
+aI3983
+aI1623
+aI634
+aI45
+aI316
+aI416
+aI620
+aI63765
+asg6
+S'Once created  this manpower tool continued to be used through 1972 .'
+p11
+ss.

@@ -1,0 +1,34 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI720
+aI7
+aI2637
+aI2768
+aI139
+aI84
+aI1237
+aI63765
+asg6
+S'The defense of cultural diversity can take several meanings:  .'
+p11
+ss.

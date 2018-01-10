@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI628
+asS'ori'
+p6
+S'This house would ban gambling'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I248
+aI182
+aI3575
+aI60
+aI3236
+aI45
+aI5119
+aI7607
+aI24
+aI2450
+aI63765
+asg6
+S'Other acts/legislations are silent with respect to online gambling/online gaming in India .'
+p11
+ss.

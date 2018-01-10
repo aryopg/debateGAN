@@ -1,0 +1,31 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI839
+aI4168
+aI7
+aI4996
+aI34759
+asS'ori'
+p6
+S'This house supports direct election of city mayors'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I39231
+aI425
+aI63765
+asg6
+S'|- Harlow 24 January 2002 5 296 25 15 490 75 25  .'
+p11
+ss.

@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI262
+asS'ori'
+p6
+S'This house would ban boxing'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI204
+aI19625
+aI24266
+aI857
+aI19653
+aI45
+aI4477
+aI22195
+aI63765
+asg6
+S'The resulting cellular excitation causes neurons to fire excessively  .'
+p11
+ss.

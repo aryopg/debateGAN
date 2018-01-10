@@ -1,0 +1,34 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI60
+aI23587
+asS'ori'
+p6
+S'This house would re-engage with Myanmar'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI260
+aI8467
+aI45
+aI268
+aI375
+aI24
+aI16844
+aI2819
+asg6
+S'the government wants to engage again in constructive dialogue'
+p11
+ss.

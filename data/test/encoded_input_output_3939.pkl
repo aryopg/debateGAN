@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3980
+aI735
+aI3
+aI7595
+aI4226
+aI7
+aI3269
+aI19
+aI3
+aI1643
+aI63765
+asg6
+S'Everyone enters the competitive race of life from the same starting-line .'
+p11
+ss.

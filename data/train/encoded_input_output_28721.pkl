@@ -1,0 +1,32 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI13605
+aI2258
+aI45
+aI2194
+asS'ori'
+p6
+S'This house prefers trade to aid'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I2135
+aI2194
+aI246
+aI98
+aI10533
+aI2234
+asg6
+S'foreign aid generally does boost growth'
+p11
+ss.

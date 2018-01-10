@@ -1,0 +1,32 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I20336
+aI12738
+aI63250
+aI5
+aI21723
+aI17411
+aI63765
+asg6
+S'Ref:Fengling  Chen  Du Yanjun  and Yu Ma .'
+p11
+ss.

@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I24
+aI64
+aI998
+aI155
+aI88
+aI671
+aI89
+aI166
+aI126
+aI7
+aI5
+aI63765
+asg6
+S'In this way they may achieve a higher level of "evolution" (p 384)  "competence" (p .&nbsp;364)  "operational ability" (p .&nbsp;363)  "functional fit" (pp .&nbsp;372  382)  and "productivity" (pp .&nbsp;363  380) .'
+p11
+ss.

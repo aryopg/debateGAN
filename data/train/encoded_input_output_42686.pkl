@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI43
+aI17
+aI4941
+aI857
+aI3211
+asS'ori'
+p6
+S'This house believes social deprivation causes crime'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI57571
+aI18172
+aI217
+aI33022
+aI736
+aI3
+aI4417
+aI63765
+asg6
+S'The UCR classifies most Hispanics into the "white" category .'
+p11
+ss.

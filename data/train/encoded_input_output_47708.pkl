@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI262
+asS'ori'
+p6
+S'This house would ban boxing'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I6426
+aI265
+aI266
+aI10102
+aI41
+aI759
+aI7
+aI8
+aI54942
+aI691
+aI3
+aI63765
+asg6
+S'Sanshou: Chinese combat sport  institutionalized as part of modern Wushu since the 1950s .'
+p11
+ss.

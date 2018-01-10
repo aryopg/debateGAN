@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI3
+aI2136
+aI7
+aI3
+aI2306
+aI7
+aI2390
+asS'ori'
+p6
+S'This house supports the one-child policy of the republic of China'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I11389
+aI52965
+aI2439
+aI5
+aI63765
+asg6
+S'Sex ratioAt birth: 1 .133 male(s)/female (2011)Under 15 years: 1 .17 male(s)/female (2011)1564 years: 1 .06 male(s)/female (2011)65 years and over: 0 .93 male(s)/female (2011)Total population: 1 .06 male(s)/female (2011)  .'
+p11
+ss.

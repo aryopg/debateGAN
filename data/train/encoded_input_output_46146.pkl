@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16642
+aI1376
+aI5269
+asS'ori'
+p6
+S'This house would subsidize poor communities'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI59523
+aI75
+aI481
+aI1447
+aI398
+aI5804
+aI1191
+aI63765
+asg6
+S'The Lacandones by late last century numbered about 800 .'
+p11
+ss.

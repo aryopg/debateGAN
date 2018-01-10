@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16756
+aI20435
+asS'ori'
+p6
+S'This house would criminalize blasphemy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I19386
+aI2820
+aI3
+aI6880
+aI1405
+aI2161
+aI45
+aI17932
+aI3
+aI61327
+aI63765
+asg6
+S"Pakistan's ambassador urged the Danish prime minister to penalize the cartoonists ."
+p11
+ss.

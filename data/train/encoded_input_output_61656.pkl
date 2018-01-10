@@ -1,0 +1,34 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI3
+aI2136
+aI7
+aI3
+aI2306
+aI7
+aI2390
+asS'ori'
+p6
+S'This house supports the one-child policy of the republic of China'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I386
+aI3521
+aI63765
+aI63765
+asg6
+S'|- 5 provinces 5 246 400 km2 (54 .45%) 79 533 000 h . (6 .345%) 15 .16 h/km2 .'
+p11
+ss.

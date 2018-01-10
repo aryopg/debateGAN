@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI262
+asS'ori'
+p6
+S'This house would ban boxing'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I988
+aI795
+aI139
+aI296
+aI24
+aI89
+aI484
+aI773
+aI989
+aI73
+aI990
+aI63765
+asg6
+S'Repeated holding can result in a boxer being penalized  or ultimately  disqualified) .'
+p11
+ss.

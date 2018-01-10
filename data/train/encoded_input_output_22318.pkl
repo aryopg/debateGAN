@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16756
+aI20435
+asS'ori'
+p6
+S'This house would criminalize blasphemy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I8219
+aI20609
+aI7
+aI2661
+aI5436
+aI4674
+aI9090
+aI60
+aI9696
+aI4955
+aI45
+aI63765
+asg6
+S'Chapter XV of Pakistan Penal Code deals with OFFENCES RELATING TO RELIGION:  295 .'
+p11
+ss.

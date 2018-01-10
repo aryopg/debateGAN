@@ -1,0 +1,31 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI839
+aI4168
+aI7
+aI4996
+aI34759
+asS'ori'
+p6
+S'This house supports direct election of city mayors'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I61025
+aI492
+aI63765
+asg6
+S'|- Torbay 14 July 2005 18 074 55 .2 14 682 44 .8 32 .1  .'
+p11
+ss.

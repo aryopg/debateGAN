@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5284
+aI150
+aI3987
+asS'ori'
+p6
+S'This house would reintroduce national service'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I6072
+aI5399
+aI2328
+aI443
+aI75
+aI70
+aI14
+aI425
+aI63765
+asg6
+S'|- Bulgaria 110 550 $44 840 $5 409 .09 7 093 635 Parliamentary Democracy No (abolished by law on January 1  2008) .'
+p11
+ss.

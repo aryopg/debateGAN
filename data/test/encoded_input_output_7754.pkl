@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI262
+asS'ori'
+p6
+S'This house would ban boxing'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I890
+aI378
+aI89
+aI313
+aI891
+aI24
+aI880
+aI484
+aI438
+aI73
+aI892
+aI63765
+asg6
+S'Officially  however  a "no decision" bout resulted in neither boxer winning or losing .'
+p11
+ss.

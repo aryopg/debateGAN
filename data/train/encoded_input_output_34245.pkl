@@ -1,0 +1,32 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI3
+aI2136
+aI7
+aI3
+aI2306
+aI7
+aI2390
+asS'ori'
+p6
+S'This house supports the one-child policy of the republic of China'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I17786
+aI63765
+asg6
+S'|- Tibetans Tibeto-Burman 2 775 622 0 .48 2 501 174 0 .36 3 821 950 0 .38 4 593 330 0 .41 5 416 021 0 .43  .'
+p11
+ss.

@@ -1,0 +1,31 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5284
+aI150
+aI3987
+asS'ori'
+p6
+S'This house would reintroduce national service'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I2044
+aI2477
+aI5286
+aI5585
+aI63765
+asg6
+S'|- Norway 307 442 $413 500 $84 595 4 691 849 constitutional monarchy Yes  .'
+p11
+ss.

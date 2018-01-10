@@ -1,0 +1,30 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI628
+asS'ori'
+p6
+S'This house would ban gambling'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I323
+aI2653
+aI2087
+aI2404
+aI63765
+asg6
+S'|- 3 Europe  Middle East  Africa 17 259 16 186 16 452 .'
+p11
+ss.

@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI1499
+aI3
+aI8115
+aI34564
+aI17106
+asS'ori'
+p6
+S'This house would build the Keystone XL pipeline'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I311
+aI3380
+aI6929
+aI134
+aI116
+aI165
+aI675
+aI2237
+aI63765
+asg6
+S'At room temperature  it is much like cold molasses"  .'
+p11
+ss.

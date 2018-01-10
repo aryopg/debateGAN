@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5284
+aI150
+aI3987
+asS'ori'
+p6
+S'This house would reintroduce national service'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I443
+aI5610
+aI3815
+aI2716
+aI285
+aI2180
+aI34
+aI6076
+aI63765
+asg6
+S'No (FWCCNationmaster : Conscription  citing Friends World Committee for Consultation (FWCC)) .'
+p11
+ss.

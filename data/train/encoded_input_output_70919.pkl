@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I10120
+aI3
+aI10022
+aI399
+aI3
+aI2471
+aI1688
+aI75
+aI3
+aI5786
+aI63765
+asg6
+S'Religiously  the Hindus form the majority  followed by the Muslims .'
+p11
+ss.

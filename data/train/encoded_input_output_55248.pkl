@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I378
+aI273
+aI182
+aI59323
+aI3251
+aI75
+aI2083
+aI220
+aI638
+aI2371
+aI63765
+asg6
+S'However  there are "International Society" NPOs funded by local governments throughout Japan  .'
+p11
+ss.

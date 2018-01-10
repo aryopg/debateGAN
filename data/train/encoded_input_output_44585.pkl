@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16756
+aI20435
+asS'ori'
+p6
+S'This house would criminalize blasphemy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI2330
+aI2637
+aI1851
+aI24
+aI19084
+aI122
+aI23359
+aI75
+aI19088
+aI4358
+aI63765
+asg6
+S'The German Cultural Centre in Gaza was raided by Palestinian students  .'
+p11
+ss.

@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI25284
+aI2823
+aI26539
+aI21330
+aI2167
+aI2319
+aI267
+aI16995
+aI63765
+asg6
+S'The fourfold model categorizes acculturation strategies along two dimensions .'
+p11
+ss.

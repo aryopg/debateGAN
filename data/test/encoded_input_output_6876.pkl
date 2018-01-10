@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I620
+aI64
+aI3262
+aI134
+aI116
+aI1966
+aI150
+aI6218
+aI116
+aI3784
+aI63765
+asg6
+S'Through this process  it is argued  national unity is retained .'
+p11
+ss.

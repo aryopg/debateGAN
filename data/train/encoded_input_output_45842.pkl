@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI3445
+aI7
+aI21330
+aI55
+aI12
+aI6879
+aI8021
+aI691
+aI63765
+asg6
+S'The concept of acculturation has been studied scientifically since 1918  .'
+p11
+ss.

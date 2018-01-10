@@ -1,0 +1,33 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI839
+aI4168
+aI7
+aI4996
+aI34759
+asS'ori'
+p6
+S'This house supports direct election of city mayors'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I61045
+aI5
+aI61046
+aI88
+aI63765
+asg6
+S'|- Crewe and Nantwich 4 May 2006 11 808 38 .2 18 768 60 .8 35 .3  .'
+p11
+ss.

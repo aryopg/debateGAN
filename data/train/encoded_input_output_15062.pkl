@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5370
+aI3
+aI5286
+asS'ori'
+p6
+S'This house would abolish the monarchy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I6465
+aI6553
+aI370
+aI38242
+aI2452
+aI2299
+aI40963
+aI38237
+aI2371
+aI63765
+asg6
+S'|- Emperor Empress Empire Imperator (Imperatrix) Brazil  Mexico  Sapa Inca  Japan .'
+p11
+ss.

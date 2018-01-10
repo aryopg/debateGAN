@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5370
+aI7146
+aI4585
+aI2446
+asS'ori'
+p6
+S'This house would abolish intellectual property rights'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I7232
+aI1019
+aI3051
+aI667
+aI95
+aI252
+aI51
+aI16
+aI191
+asg6
+S'artists cannot produce new works without an economic incentive'
+p11
+ss.

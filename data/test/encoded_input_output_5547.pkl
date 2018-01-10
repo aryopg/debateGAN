@@ -1,0 +1,33 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI60
+aI23587
+asS'ori'
+p6
+S'This house would re-engage with Myanmar'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI1156
+aI2135
+aI2161
+aI45161
+aI48423
+aI2173
+aI63765
+asg6
+S'- The Irish Foreign Minister  Dermot Ahern  stated that:  .'
+p11
+ss.

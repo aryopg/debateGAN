@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I6080
+aI116
+aI153
+aI17455
+aI75
+aI2610
+aI45
+aI2812
+aI26451
+aI63765
+asg6
+S'Separation is often facilitated by immigration to ethnic enclaves .'
+p11
+ss.

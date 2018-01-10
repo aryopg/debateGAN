@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI60
+aI23587
+asS'ori'
+p6
+S'This house would re-engage with Myanmar'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I182
+aI99
+aI45
+aI1654
+aI2998
+aI73
+aI84
+aI759
+aI24
+aI132
+aI15769
+aI63765
+asg6
+S'"People are not to follow  encourage or take part in these marches .'
+p11
+ss.

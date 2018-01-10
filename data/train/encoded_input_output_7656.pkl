@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI163
+aI959
+aI2042
+aI3557
+asS'ori'
+p6
+S'This house would make physical education compulsory'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I397
+aI3
+aI134
+aI122
+aI16353
+aI2596
+aI1727
+aI63765
+asg6
+S'During the 1990s  it was inspected nine times .'
+p11
+ss.

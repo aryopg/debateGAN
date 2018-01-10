@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI3807
+aI314
+aI3433
+asS'ori'
+p6
+S'This house would ban partial birth abortions'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I4577
+aI3862
+aI45
+aI11
+aI51
+aI4835
+aI21
+aI45
+aI3269
+asg6
+S'unborn children to have an inherent right to life'
+p11
+ss.

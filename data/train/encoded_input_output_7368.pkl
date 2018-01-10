@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I42859
+aI5
+aI42860
+aI24
+aI2138
+aI5
+aI9750
+aI1035
+aI9750
+aI5
+aI6162
+aI63765
+asg6
+S'Gellner and Breuilly  in Nations and Nationalism  contrast nationalism and patriotism .'
+p11
+ss.

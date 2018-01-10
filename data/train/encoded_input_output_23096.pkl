@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16756
+aI20435
+asS'ori'
+p6
+S'This house would criminalize blasphemy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI4694
+aI382
+aI2493
+aI75
+aI3
+aI4996
+aI7
+aI5292
+aI17256
+aI2483
+aI63765
+asg6
+S'The charges were rejected by the City of Westminster magistrates court .'
+p11
+ss.

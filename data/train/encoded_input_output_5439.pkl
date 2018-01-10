@@ -1,0 +1,32 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI15841
+aI2736
+asS'ori'
+p6
+S'This house would disband ASEAN'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I7961
+aI7961
+aI7961
+aI7961
+aI7961
+aI7961
+aI63765
+asg6
+S': 706 .75 billions (1 033 billions): 318 .91 billions (589 billions): 237 .96 billions (416 billions): 222 .70 billions (293 billions): 199 .59 billions (369 billions): 103 .57 billions (277 billions)  .'
+p11
+ss.

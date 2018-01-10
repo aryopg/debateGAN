@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI60
+aI23587
+asS'ori'
+p6
+S'This house would re-engage with Myanmar'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI260
+aI55
+aI10453
+aI14
+aI89
+aI290
+aI7
+aI3157
+aI2368
+aI3409
+aI2328
+asg6
+S'the government has embarked on a series of reforms toward liberal democracy'
+p11
+ss.

@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16756
+aI20435
+asS'ori'
+p6
+S'This house would criminalize blasphemy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI2411
+aI2471
+aI7
+aI5786
+aI4796
+aI14635
+aI5
+aI2617
+aI63765
+asg6
+S'The vast majority of Muslims reject extremism and violence .'
+p11
+ss.

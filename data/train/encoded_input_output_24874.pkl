@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16756
+aI20435
+asS'ori'
+p6
+S'This house would criminalize blasphemy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I1874
+aI271
+aI5404
+aI60
+aI3
+aI21
+aI7
+aI4640
+aI116
+aI31885
+aI63765
+asg6
+S'Defending their statements with the right of expression is deceptive .'
+p11
+ss.

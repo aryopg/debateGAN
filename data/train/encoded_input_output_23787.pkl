@@ -1,0 +1,31 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI3
+aI2136
+aI7
+aI3
+aI2306
+aI7
+aI2390
+asS'ori'
+p6
+S'This house supports the one-child policy of the republic of China'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I63765
+asg6
+S'2100 BC: 14 000 0002 AD: 60 000 0001000: 40 000 0001500: 103 000 0001650: 123 000 0001750: 260 000 0001850: 412 000 000  .'
+p11
+ss.

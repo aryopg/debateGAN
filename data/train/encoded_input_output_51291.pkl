@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I1706
+aI15307
+aI2042
+aI417
+aI1074
+aI953
+aI34
+aI51
+aI2758
+aI26104
+aI4223
+aI63765
+asg6
+S'Further  multicultural education should include preparation for an active  participatory citizenship .'
+p11
+ss.

@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI262
+asS'ori'
+p6
+S'This house would ban boxing'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I1146
+aI1688
+aI588
+aI3
+aI1907
+aI60
+aI89
+aI1908
+aI787
+aI63765
+asg6
+S'Pacquiao followed up the rope-a-dope gambit with a withering knockdown .'
+p11
+ss.

@@ -1,0 +1,27 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI628
+asS'ori'
+p6
+S'This house would ban gambling'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I24
+aI2959
+asg6
+S'In April 2005  Yahoo!'
+p11
+ss.

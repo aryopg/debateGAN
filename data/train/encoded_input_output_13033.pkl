@@ -1,0 +1,33 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI628
+asS'ori'
+p6
+S'This house would ban gambling'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI28
+aI10
+aI5930
+aI11294
+aI19
+aI487
+aI63765
+asg6
+S'The English State Lottery ran from 1694 until 1826 .'
+p11
+ss.

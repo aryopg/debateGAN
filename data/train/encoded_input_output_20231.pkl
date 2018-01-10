@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5370
+aI7146
+aI4585
+aI2446
+asS'ori'
+p6
+S'This house would abolish intellectual property rights'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I64
+aI6714
+aI3
+aI2038
+aI7
+aI27654
+aI7
+aI22052
+aI63765
+asg6
+S'This reduces the risk of commoditisation of topical non-fiction .'
+p11
+ss.

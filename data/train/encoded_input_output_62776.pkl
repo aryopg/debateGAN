@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI16756
+aI20435
+asS'ori'
+p6
+S'This house would criminalize blasphemy'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I132
+aI2511
+aI7228
+aI12511
+aI2381
+aI3
+aI32335
+aI7
+aI2382
+aI73
+aI63765
+asg6
+S'These laws forbid hate speech  the vilification of religion  or "religious insult" .'
+p11
+ss.

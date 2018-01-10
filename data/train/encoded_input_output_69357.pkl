@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5284
+aI150
+aI3987
+asS'ori'
+p6
+S'This house would reintroduce national service'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I223
+aI248
+aI2767
+aI5
+aI22
+aI5850
+aI382
+aI5175
+aI45
+aI6004
+aI63765
+asg6
+S'All other religious and political objectors were forced to participate .'
+p11
+ss.

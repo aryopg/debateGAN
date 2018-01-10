@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI10662
+aI626
+aI187
+aI2157
+aI2697
+aI19
+aI2371
+asS'ori'
+p6
+S'This house would remove United States military bases from Japan'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I11542
+aI937
+aI7419
+aI26273
+aI63765
+asg6
+S"Okinawa remains Japan's poorest prefecture ."
+p11
+ss.

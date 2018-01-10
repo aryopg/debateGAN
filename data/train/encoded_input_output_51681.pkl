@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3
+aI2543
+aI4928
+aI7
+aI3
+aI58491
+aI910
+aI24
+aI66
+aI6095
+aI63765
+asg6
+S')  the founding father of the Cynic movement in Ancient Greece .'
+p11
+ss.

@@ -1,0 +1,35 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI628
+asS'ori'
+p6
+S'This house would ban gambling'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I7605
+aI628
+aI116
+aI153
+aI419
+aI14729
+aI45
+aI3446
+aI2567
+aI63765
+asg6
+S'Compulsive gambling is often very detrimental to personal relationships .'
+p11
+ss.

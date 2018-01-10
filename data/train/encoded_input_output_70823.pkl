@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI43
+aI17
+aI4941
+aI857
+aI3211
+asS'ori'
+p6
+S'This house believes social deprivation causes crime'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I17194
+aI2722
+aI4793
+aI8411
+aI75
+aI3485
+aI5
+aI11389
+aI63765
+asg6
+S'Homicide rates differ markedly by age and sex .'
+p11
+ss.

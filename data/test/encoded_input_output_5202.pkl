@@ -1,0 +1,32 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI5284
+aI150
+aI3987
+asS'ori'
+p6
+S'This house would reintroduce national service'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I2658
+aI2477
+aI5286
+aI2879
+aI6074
+aI63765
+asg6
+S'|- Jordan 91 971 $27 130 $2 644 .89 6 508 271 constitutional monarchy sources differYes .'
+p11
+ss.

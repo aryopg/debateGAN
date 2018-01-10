@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI1499
+aI177
+aI1819
+aI34
+aI160
+asS'ori'
+p6
+S'This house would build high rises for housing'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I1872
+aI2992
+aI3063
+aI2322
+aI2598
+aI11794
+aI60
+aI2322
+aI1243
+asg6
+S'Numerous studies link increased population density with increased aggression'
+p11
+ss.

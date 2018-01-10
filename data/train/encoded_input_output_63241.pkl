@@ -1,0 +1,32 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2017
+aI262
+asS'ori'
+p6
+S'This house would ban boxing'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I40675
+aI17859
+aI88
+aI316
+aI97
+aI4944
+aI63765
+asg6
+S'Ingemar Johansson may be another victim .'
+p11
+ss.

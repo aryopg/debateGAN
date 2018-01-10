@@ -463,6 +463,8 @@ if __name__ == '__main__':
     processed_data_dir = '../data-no-article'
     train_data_dir = os.path.join(processed_data_dir, 'train')
     test_data_dir = os.path.join(processed_data_dir, 'test')
+    train_data_dir = os.path.join(processed_data_dir, 'train')
+    test_data_dir = os.path.join(processed_data_dir, 'test')
 
     if not os.path.isfile(os.path.join(processed_data_dir, 'lexicon-dict.pkl')):
         raise IOError("Cannot find %s. Please run preprocess_no_article.py before running train.py" % os.path.join(processed_data_dir, 'lexicon-dict.pkl'))

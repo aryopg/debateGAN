@@ -1,0 +1,36 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI394
+aI2773
+aI12505
+asS'ori'
+p6
+S'This house would embrace multiculturalism'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I2646
+aI1350
+aI8596
+aI1160
+aI7
+aI8875
+aI14534
+aI45
+aI9097
+aI1161
+aI63765
+asg6
+S'Asian success demonstrates lack of structural obstacles to upward mobility .'
+p11
+ss.

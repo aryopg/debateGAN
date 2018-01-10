@@ -1,0 +1,37 @@
+(dp1
+S'input'
+p2
+(dp3
+S'encoded'
+p4
+(lp5
+I64
+aI2179
+aI235
+aI3
+aI2136
+aI7
+aI3
+aI2306
+aI7
+aI2390
+asS'ori'
+p6
+S'This house supports the one-child policy of the republic of China'
+p7
+ssS'output'
+p8
+(dp9
+g4
+(lp10
+I3822
+aI2598
+aI3976
+aI60
+aI3976
+aI60
+aI63765
+asg6
+S'Adult population (ages 1549) living with HIV: 0 .15% (2008)People living with HIV/AIDS: 100 000 (2008)HIV/AIDS deaths: 44 000 (2003)  .'
+p11
+ss.
