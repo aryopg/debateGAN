@@ -35,10 +35,10 @@ use_cuda = torch.cuda.is_available()
 if use_cuda:
     gpu = 0
 
-processed_data_dir = '../data-no-article'
+processed_data_dir = '../data_char'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
-INV_LEXICON_DICTIONARY = pickle.load(open('../data-no-article/lexicon-dict-inverse.pkl', 'rb'))
+INV_LEXICON_DICTIONARY = pickle.load(open('../data_char/lexicon-dict-inverse.pkl', 'rb'))
 
 def calc_gradient_penalty(batch_size, lam, netD, real_data, fake_data):
     alpha = torch.rand(batch_size, 1, 1)
@@ -460,7 +460,7 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     logger.addHandler(fh)
 
-    processed_data_dir = '../data-no-article'
+    processed_data_dir = '../data_char'
     train_data_dir = os.path.join(processed_data_dir, 'train')
     test_data_dir = os.path.join(processed_data_dir, 'test')
     train_data_dir = os.path.join(processed_data_dir, 'train')

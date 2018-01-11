@@ -63,10 +63,10 @@ class DataGenerator(object):
         for idx, ID in enumerate(list_IDs_temp):
             input_output = pickle.load(open(os.path.join(self.data_dir, os.path.basename('encoded_input_output') + '_' + str(ID+1) + '.pkl'), 'rb'))
 
-            if np.array(input_output['input']['motion']).shape[0] <= self.motion_length:
-                the_motion_input[idx, :np.array(input_output['input']['motion']).shape[0]] = np.array(input_output['input']['motion'])
+            if np.array(input_output['input']['encoded']).shape[0] <= self.motion_length:
+                the_motion_input[idx, :np.array(input_output['input']['encoded']).shape[0]] = np.array(input_output['input']['encoded'])
             else:
-                the_motion_input[idx] = np.array(input_output['input']['motion'])[:self.motion_length]
+                the_motion_input[idx] = np.array(input_output['input']['encoded'])[:self.motion_length]
 
             if np.array(input_output['output']['encoded']).shape[0] <= self.claim_length:
                 the_labels[idx, :np.array(input_output['output']['encoded']).shape[0]] = to_categorical(np.array(input_output['output']['encoded']), num_classes=self.lexicon_count)

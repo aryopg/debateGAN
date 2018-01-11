@@ -2,4 +2,3 @@
 code/helpers/datagenerator_emb.py
 code/emb_wgan.py
 data/
-preprocess_no_article.py
