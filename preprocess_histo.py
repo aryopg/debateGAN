@@ -38,6 +38,8 @@ def create_dictionary(file):
     id_counter += 1
     lexicons_dict['<PAD>'] = id_counter
     id_counter += 1
+    lexicons_dict['<UNK>'] = id_counter
+    id_counter += 1
 
     print("Creating Dictionary ...")
 
@@ -154,8 +156,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                 try:
                     encoded_motion.append(lexicon_dictionary[word.lower()])
                 except:
-                    # print word
-                    continue
+                    encoded_motion.append(lexicon_dictionary['<SOS>'])
             else :
                 # print word
                 continue
@@ -166,8 +167,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                 try:
                     encoded_sentence.append(lexicon_dictionary[word.lower()])
                 except:
-                    # print word
-                    continue
+                    encoded_sentence.append(lexicon_dictionary['<SOS>'])
             else :
                 # print word
                 continue
@@ -190,8 +190,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                 try:
                     encoded_motion.append(lexicon_dictionary[word.lower()])
                 except:
-                    # print word
-                    continue
+                    encoded_motion.append(lexicon_dictionary['<SOS>'])
             else :
                 # print word
                 continue
@@ -202,8 +201,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                 try:
                     encoded_sentence.append(lexicon_dictionary[word.lower()])
                 except:
-                    # print word
-                    continue
+                    encoded_sentence.append(lexicon_dictionary['<SOS>'])
             else :
                 # print word
                 continue
@@ -226,8 +224,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                 try:
                     encoded_motion.append(lexicon_dictionary[word.lower()])
                 except:
-                    # print word
-                    continue
+                    encoded_motion.append(lexicon_dictionary['<SOS>'])
             else :
                 # print word
                 continue
@@ -238,8 +235,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                 try:
                     encoded_sentence.append(lexicon_dictionary[word.lower()])
                 except:
-                    # print word
-                    continue
+                    encoded_sentence.append(lexicon_dictionary['<SOS>'])
             else :
                 # print word
                 continue
