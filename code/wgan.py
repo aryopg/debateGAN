@@ -443,7 +443,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 if __name__ == '__main__':
     run_name = datetime.datetime.now().strftime('%Y:%m:%d:%H:%M:%S')
     motion_length = 20
-    claim_length = 20
+    claim_length = 15
     embedding_dim = 256
     hidden_dim_G = 128
     hidden_dim_D = 300
