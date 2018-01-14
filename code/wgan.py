@@ -35,10 +35,10 @@ use_cuda = torch.cuda.is_available()
 if use_cuda:
     gpu = 0
 
-processed_data_dir = '../data_char'
+processed_data_dir = '../data_histo'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
-INV_LEXICON_DICTIONARY = pickle.load(open('../data_char/lexicon-dict-inverse.pkl', 'rb'))
+INV_LEXICON_DICTIONARY = pickle.load(open('../data_histo/lexicon-dict-inverse.pkl', 'rb'))
 
 def calc_gradient_penalty(batch_size, lam, netD, real_data, fake_data):
     alpha = torch.rand(batch_size, 1, 1)
@@ -419,12 +419,16 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 
                 motion_test, claim_test = test_generator.generate().next()
                 _motion_test = np.asarray(motion_test)
+                _claim_test = np.asarray(claim_test)
                 real_motion_test = torch.LongTensor(_motion_test.tolist())
+                real_claim_test = torch.from_numpy(_claim_test)
                 if use_cuda:
                     real_motion_test = real_motion_test.cuda(gpu)
+                    real_claim_test = real_claim_test.cuda(gpu)
                 real_motion_test_v = autograd.Variable(real_motion_test)
+                real_claim_test_v = autograd.Variable(real_claim_test)
 
-                for mot, cla in zip(decode_motion(motion_test), decode(netG(real_motion_test_v))):
+                for mot, cla in zip(decode_motion(motion_test), decode(netG(real_motion_test_v, real_claim_test_v, 0.0))):
                     result_text.write("Motion: %s\n" % mot)
                     result_text.write("Generated Claim: %s\n\n" % cla)
         if iteration % 2 == 0:
@@ -439,7 +443,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 if __name__ == '__main__':
     run_name = datetime.datetime.now().strftime('%Y:%m:%d:%H:%M:%S')
     motion_length = 20
-    claim_length = 20
+    claim_length = 15
     embedding_dim = 256
     hidden_dim_G = 128
     hidden_dim_D = 300
@@ -460,7 +464,7 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     logger.addHandler(fh)
 
-    processed_data_dir = '../data_char'
+    processed_data_dir = '../data_histo'
     train_data_dir = os.path.join(processed_data_dir, 'train')
     test_data_dir = os.path.join(processed_data_dir, 'test')
     train_data_dir = os.path.join(processed_data_dir, 'train')
