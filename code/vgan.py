@@ -27,7 +27,7 @@ from discriminator import Discriminator
 
 from helpers.utils import llprint
 
-from loss import batchNLLLoss, JSDLoss, MMDLoss
+from loss import batchNLLLoss, JSDLoss#, MMDLoss
 
 torch.manual_seed(1)
 use_cuda = torch.cuda.is_available()
@@ -35,10 +35,10 @@ use_cuda = torch.cuda.is_available()
 if use_cuda:
     gpu = 0
 
-processed_data_dir = '../data'
+processed_data_dir = '../data_histo'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
-INV_LEXICON_DICTIONARY = pickle.load(open('../data/lexicon-dict-inverse.pkl', 'rb'))
+INV_LEXICON_DICTIONARY = pickle.load(open('../data_histo/lexicon-dict-inverse.pkl', 'rb'))
 
 def decode(out):
     ret = []
@@ -148,10 +148,9 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 real_motion_v = autograd.Variable(real_motion, volatile=True)
                 fake_labels = autograd.Variable(fake_labels)
 
-                fake_output = netG(real_motion_v).data
-                fake = autograd.Variable(fake_output)
+                fake = autograd.Variable(netG(real_motion_v, real_claim_v, 0.0).data)
                 inputv = fake
-                _, D_fake = netD(inputv)
+                f_fake, D_fake = netD(inputv)
 
                 D_fake_loss = criterion(D_fake, fake_labels)
 
@@ -178,23 +177,21 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 _motion, _claim = training_generator.generate().next()
                 _motion = np.asarray(_motion)
                 _claim = np.asarray(_claim)
-                real_claim = torch.from_numpy(_claim)
                 real_motion = torch.LongTensor(_motion.tolist())
+                real_claim_G = torch.from_numpy(np.argmax(_claim, 2))
+                real_claim_D = torch.from_numpy(_claim)
 
                 if use_cuda:
                     real_motion = real_motion.cuda(gpu)
+                    real_claim_G = real_claim_G.cuda(gpu)
+                    real_claim_D = real_claim_D.cuda(gpu)
                 real_motion_v = autograd.Variable(real_motion)
+                real_claim_G_v = autograd.Variable(real_claim_G)
+                real_claim_D_v = autograd.Variable(real_claim_D)
 
-                real_labels = torch.ones(real_motion.size(0),1)
-                if use_cuda:
-                    real_claim = real_claim.cuda(gpu)
-                    real_labels = real_labels.cuda(gpu)
-                real_claim_v = autograd.Variable(real_claim)
-                real_labels = autograd.Variable(real_labels)
-
-                fake = netG(real_motion_v)
+                fake = netG(real_motion_v, real_claim_G_v)
                 f_fake, G = netD(fake)
-                f_real, _ = netD(real_claim_v)
+                f_real, _ = netD(real_claim_D_v)
 
                 G_loss = jsdloss(batch_size, f_real, f_fake)
                 #G_loss = criterion(G, real_labels)
@@ -216,12 +213,16 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 
                 motion_test, claim_test = test_generator.generate().next()
                 _motion_test = np.asarray(motion_test)
+                _claim_test = np.asarray(claim_test)
                 real_motion_test = torch.LongTensor(_motion_test.tolist())
+                real_claim_test = torch.from_numpy(_claim_test)
                 if use_cuda:
                     real_motion_test = real_motion_test.cuda(gpu)
+                    real_claim_test = real_claim_test.cuda(gpu)
                 real_motion_test_v = autograd.Variable(real_motion_test)
+                real_claim_test_v = autograd.Variable(real_claim_test)
 
-                for mot, cla in zip(decode_motion(motion_test), decode(netG(real_motion_test_v))):
+                for mot, cla in zip(decode_motion(motion_test), decode(netG(real_motion_test_v, real_claim_test_v, 0.0))):
                     result_text.write("Motion: %s\n" % mot)
                     result_text.write("Generated Claim: %s\n\n" % cla)
         if iteration % 2 == 0:
@@ -236,7 +237,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 if __name__ == '__main__':
     run_name = datetime.datetime.now().strftime('%Y:%m:%d:%H:%M:%S')
     motion_length = 20
-    claim_length = 10
+    claim_length = 15
     embedding_dim = 256
     hidden_dim_G = 128
     hidden_dim_D = 300
@@ -245,7 +246,7 @@ if __name__ == '__main__':
     epochs = 1000000
     iteration_d = 5
     iteration_g = 1
-    batch_size = 32
+    batch_size = 256
 
     logger = logging.getLogger('eval_textGAN')
     logger.setLevel(logging.INFO)
@@ -258,7 +259,7 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     logger.addHandler(fh)
 
-    processed_data_dir = '../data'
+    processed_data_dir = '../data_histo'
     generated_data_dir = 'generated'
     pretraining_generated_data_dir = 'pretraining_generated'
     train_data_dir = os.path.join(processed_data_dir, 'train')
