@@ -20,7 +20,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from helpers.datagenerator import DataGenerator
+from helpers.datagenerator import DataGenerator, FakeDataGenerator
 
 from generator import GeneratorConvEncDec, GeneratorEncDec, GeneratorEncDecTeacherForcing, GeneratorVan
 from discriminator import Discriminator
@@ -35,10 +35,10 @@ use_cuda = torch.cuda.is_available()
 if use_cuda:
     gpu = 0
 
-processed_data_dir = '../data_histo'
+processed_data_dir = '../data_char'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
-INV_LEXICON_DICTIONARY = pickle.load(open('../data_histo/lexicon-dict-inverse.pkl', 'rb'))
+INV_LEXICON_DICTIONARY = pickle.load(open('../data_char/lexicon-dict-inverse.pkl', 'rb'))
 
 def calc_gradient_penalty(batch_size, lam, netD, real_data, fake_data):
     alpha = torch.rand(batch_size, 1, 1)
@@ -72,7 +72,7 @@ def decode(out):
         sent = []
         for word_id in idx:
             sent.append(INV_LEXICON_DICTIONARY[word_id])
-        ret.append(" ".join(sent))
+        ret.append("".join(sent))
     return ret
 
 def decode_motion(out):
@@ -82,7 +82,7 @@ def decode_motion(out):
         for word_id in idx:
             if word_id == 0: continue
             sent.append(INV_LEXICON_DICTIONARY[word_id])
-        ret.append(" ".join(sent))
+        ret.append("".join(sent))
     return ret
 
 def save_checkpoint(state, filename='last_checkpoint_wgan.pth.tar'):
@@ -90,7 +90,12 @@ def save_checkpoint(state, filename='last_checkpoint_wgan.pth.tar'):
         os.remove(filename)
     torch.save(state, filename)
 
-def save_pretrain_checkpoint(state, filename='last_checkpoint_vanilla_pretrain_encdec.pth.tar'):
+def save_pretrain_checkpoint_D(state, filename='last_checkpoint_vanilla_pretrain_encdec_Disc.pth.tar'):
+    if os.path.isfile(filename):
+        os.remove(filename)
+    torch.save(state, filename)
+
+def save_pretrain_checkpoint_G(state, filename='last_checkpoint_vanilla_pretrain_encdec_Gen.pth.tar'):
     if os.path.isfile(filename):
         os.remove(filename)
     torch.save(state, filename)
@@ -192,7 +197,7 @@ def pretrain(run_name, netD, netG, motion_length, claim_length, embedding_dim, h
             out.write(str(iteration+1) + ',' + str(D_loss.cpu().data.numpy()[0]) + '\n')
 
         if iteration % 10 == 0:
-            save_pretrain_checkpoint({
+            save_pretrain_checkpoint_D({
                 'epoch': iteration + 1,
                 'D_state_dict': netD.state_dict(),
                 'optimizerD' : optimizerD.state_dict(),
@@ -229,19 +234,20 @@ def pretrain(run_name, netD, netG, motion_length, claim_length, embedding_dim, h
             _motion = np.asarray(_motion)
             _claim = np.asarray(_claim)
             real_motion = torch.LongTensor(_motion.tolist())
-            real_claim = torch.from_numpy(_claim).type('torch.LongTensor')
+            real_claim_G = torch.from_numpy(np.argmax(_claim, 2))
+            real_claim_D = torch.from_numpy(_claim).type('torch.LongTensor')
 
             if use_cuda:
                 real_motion = real_motion.cuda(gpu)
+                real_claim_G = real_claim_G.cuda(gpu)
+                real_claim_D = real_claim_D.cuda(gpu)
             real_motion_v = autograd.Variable(real_motion)
+            real_claim_G_v = autograd.Variable(real_claim_G)
+            real_claim_D_v = autograd.Variable(real_claim_D)
 
-            if use_cuda:
-                real_claim = real_claim.cuda(gpu)
-            real_claim_v = autograd.Variable(real_claim)
+            fake = netG(real_motion_v, real_claim_G_v)
 
-            fake = netG(real_motion_v)
-
-            G_loss_1 = nllloss(fake, real_claim_v, claim_length)
+            G_loss_1 = nllloss(fake, real_claim_D_v, claim_length)
 
             G_loss_1.backward()
             G_cost = G_loss_1
@@ -259,16 +265,20 @@ def pretrain(run_name, netD, netG, motion_length, claim_length, embedding_dim, h
 
                 motion_test, claim_test = test_generator.generate().next()
                 _motion_test = np.asarray(motion_test)
+                _claim_test = np.asarray(claim_test)
                 real_motion_test = torch.LongTensor(_motion_test.tolist())
+                real_claim_test = torch.from_numpy(_claim_test)
                 if use_cuda:
                     real_motion_test = real_motion_test.cuda(gpu)
+                    real_claim_test = real_claim_test.cuda(gpu)
                 real_motion_test_v = autograd.Variable(real_motion_test)
+                real_claim_test_v = autograd.Variable(real_claim_test)
 
-                for mot, cla in zip(decode_motion(motion_test), decode(netG(real_motion_test_v))):
+                for mot, cla in zip(decode_motion(motion_test), decode(netG(real_motion_test_v, real_claim_test_v, 0.0))):
                     result_text.write("Motion: %s\n" % mot)
                     result_text.write("Generated Claim: %s\n\n" % cla)
         if iteration % 10 == 0:
-            save_pretrain_checkpoint({
+            save_pretrain_checkpoint_G({
                 'epoch': iteration + 1,
                 'G_state_dict': netG.state_dict(),
                 'optimizerG' : optimizerG.state_dict(),
@@ -356,8 +366,8 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 D_fake = D_fake.mean()
                 D_fake.backward(one, retain_graph=True)
 
-                D_jsd = jsdloss(batch_size, f_fake, f_real).mean()
-                D_jsd.backward(mone)
+                #D_jsd = jsdloss(batch_size, f_fake, f_real).mean()
+                #D_jsd.backward(mone)
 
                 # train with gradient penalty
                 gradient_penalty = calc_gradient_penalty(batch_size, lam, netD, real_claim_v.data, fake.data)# + cosine(f_fake, f_real).mean()
@@ -400,8 +410,8 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
             f_fake, G = netD(fake)
             f_real, _ = netD(real_claim_D_v)
 
-            # G_loss = G.mean()
-            G_loss = G.mean() + jsdloss(batch_size, f_fake, f_real).mean()
+            G_loss = G.mean()
+            #G_loss = G.mean() + jsdloss(batch_size, f_fake, f_real).mean()
 
             G_loss.backward(mone)
             G_cost = -G_loss
@@ -442,13 +452,13 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 
 if __name__ == '__main__':
     run_name = datetime.datetime.now().strftime('%Y:%m:%d:%H:%M:%S')
-    motion_length = 20
-    claim_length = 15
+    motion_length = 75
+    claim_length = 32
     embedding_dim = 256
     hidden_dim_G = 128
     hidden_dim_D = 300
     lam = 10
-    pretrain_epochs = 10000
+    pretrain_epochs = 150
     epochs = 1000000
     iteration_d = 5
     batch_size = 64
@@ -464,7 +474,7 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     logger.addHandler(fh)
 
-    processed_data_dir = '../data_histo'
+    processed_data_dir = '../data_char'
     train_data_dir = os.path.join(processed_data_dir, 'train')
     test_data_dir = os.path.join(processed_data_dir, 'test')
     train_data_dir = os.path.join(processed_data_dir, 'train')
@@ -488,5 +498,5 @@ if __name__ == '__main__':
         netG = GeneratorEncDecTeacherForcing(batch_size, lexicon_count, motion_length, claim_length, hidden_dim_G, embedding_dim)
         netD = Discriminator(batch_size, lexicon_count, claim_length, hidden_dim_D)
 
-        # netD, netG = pretrain(run_name=run_name, netD=netD, netG=netG, motion_length=motion_length, claim_length=claim_length, embedding_dim=embedding_dim, hidden_dim_G=hidden_dim_G, hidden_dim_D=hidden_dim_D, lam=lam, batch_size=batch_size, epochs=pretrain_epochs, num_words=lexicon_count, train_data_dir=train_data_dir, test_data_dir=test_data_dir)
+        netD, netG = pretrain(run_name=run_name, netD=netD, netG=netG, motion_length=motion_length, claim_length=claim_length, embedding_dim=embedding_dim, hidden_dim_G=hidden_dim_G, hidden_dim_D=hidden_dim_D, lam=lam, batch_size=batch_size, epochs=pretrain_epochs, num_words=lexicon_count, train_data_dir=train_data_dir, test_data_dir=test_data_dir)
         train(run_name=run_name, netG=netG, netD=netD, motion_length=motion_length, claim_length=claim_length, embedding_dim=embedding_dim, hidden_dim_G=hidden_dim_G, hidden_dim_D=hidden_dim_D, lam=lam, batch_size=batch_size, epochs=epochs, iteration_d=iteration_d, num_words=lexicon_count, train_data_dir=train_data_dir, test_data_dir=test_data_dir)
