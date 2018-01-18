@@ -231,6 +231,7 @@ class GeneratorEncDecTeacherForcingV2(nn.Module):
         self.batch_size = batch_size
         self.motion_length = motion_size
         self.claim_length = claim_size
+        self.vocab_size = vocab_size
 
         self.dropout = nn.Dropout(dropout_p)
         self.encoder_embeddings = nn.Embedding(vocab_size, embedding_dim)
@@ -267,7 +268,7 @@ class GeneratorEncDecTeacherForcingV2(nn.Module):
         decoder_input = output
         decoder_hidden = decoder_hidden.permute(1,0,2).squeeze()
 
-        decoder_output_full = autograd.Variable(torch.zeros(self.claim_length, self.batch_size, self.hidden_dim))
+        decoder_output_full = autograd.Variable(torch.zeros(self.claim_length, self.batch_size, self.vocab_size))
         decoder_output_full = decoder_output_full.cuda() if use_cuda else decoder_output_full
 
         use_teacher_forcing = True if random.random() < teacher_forcing_ratio else False
@@ -276,6 +277,7 @@ class GeneratorEncDecTeacherForcingV2(nn.Module):
             target = target_output.permute(1,0)
             for i in range(self.claim_length):
                 decoder_hidden = self.decoder_gru_cell(decoder_input, decoder_hidden)
+                decoder_hidden = self.softmax(self.out(decoder_hidden))
                 decoder_output_full[i, :, :] = decoder_hidden
                 decoder_input = self.decoder_embeddings(target[i-1])  # Teacher forcing
                 decoder_input = self.dropout(decoder_input)
@@ -284,7 +286,8 @@ class GeneratorEncDecTeacherForcingV2(nn.Module):
             for i in range(self.claim_length):
                 decoder_input = decoder_input.squeeze()
                 decoder_hidden = self.decoder_gru_cell(decoder_input, decoder_hidden)
-                topv, topi = decoder_hidden.data.topk(1)
+                decoder_output = self.softmax(self.out(decoder_hidden))
+                topv, topi = decoder_output.data.topk(1)
                 # ni = topi#[0][0]
                 # print("ni: ", ni)
                 # decoder_input_v = autograd.Variable(torch.LongTensor([[ni]]))
@@ -292,13 +295,13 @@ class GeneratorEncDecTeacherForcingV2(nn.Module):
                 decoder_input_v = decoder_input_v.cuda() if use_cuda else decoder_input_v
                 decoder_input = self.decoder_embeddings(decoder_input_v)
                 decoder_input = self.dropout(decoder_input)
-                decoder_output_full[i, :, :] = decoder_hidden
+                decoder_output_full[i, :, :] = decoder_output
 
         decoder_output_full = decoder_output_full.permute(1,0,2)
 
-        gen_output = self.softmax(self.out(decoder_output_full))
+        # gen_output = self.softmax(self.out(decoder_output_full))
 
-        return gen_output
+        return decoder_output_full
 
     def forward(self, motion, target_output, teacher_forcing_ratio=0.8):
         encoder_output, encoder_hidden = self.encode(motion)
