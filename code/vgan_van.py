@@ -22,7 +22,8 @@ import torch.optim as optim
 
 from helpers.datagenerator import DataGenerator, FakeDataGenerator
 
-from generator import GeneratorEncDecTeacherForcing, GeneratorVan
+# from generator import GeneratorConvEncDec, GeneratorEncDec, GeneratorEncDecTeacherForcing, GeneratorVan
+from generator import GeneratorEncDecTeacherForcingV2 as GeneratorEncDecTeacherForcing
 from discriminator import Discriminator
 
 from helpers.utils import llprint
