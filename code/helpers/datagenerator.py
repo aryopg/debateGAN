@@ -129,7 +129,7 @@ class FakeDataGenerator(object):
         idx = 0
         for ID in list_IDs_temp:
             input_output = pickle.load(open(os.path.join(self.data_dir, os.path.basename('encoded_input_output') + '_' + str(ID+1) + '.pkl'), 'rb'))
-
+            
             if np.array(input_output['output']['encoded']).shape[0] <= self.claim_length:
                 claims[idx, :np.array(input_output['output']['encoded']).shape[0]] = to_categorical(np.array(input_output['output']['encoded']), num_classes=self.lexicon_count)
                 labels[idx] = 1.0

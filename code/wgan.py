@@ -22,7 +22,8 @@ import torch.optim as optim
 
 from helpers.datagenerator import DataGenerator, FakeDataGenerator
 
-from generator import GeneratorConvEncDec, GeneratorEncDec, GeneratorEncDecTeacherForcing, GeneratorVan
+from generator import GeneratorEncDec, GeneratorVan#, GeneratorEncDecTeacherForcing
+from generator import GeneratorEncDecTeacherForcingV2 as GeneratorEncDecTeacherForcing
 from discriminator import Discriminator
 
 from helpers.utils import llprint
@@ -35,10 +36,10 @@ use_cuda = torch.cuda.is_available()
 if use_cuda:
     gpu = 0
 
-processed_data_dir = '../data_char'
+processed_data_dir = '../data_histo_2'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
-INV_LEXICON_DICTIONARY = pickle.load(open('../data_char/lexicon-dict-inverse.pkl', 'rb'))
+INV_LEXICON_DICTIONARY = pickle.load(open('../data_histo_2/lexicon-dict-inverse.pkl', 'rb'))
 
 def calc_gradient_penalty(batch_size, lam, netD, real_data, fake_data):
     alpha = torch.rand(batch_size, 1, 1)
@@ -377,6 +378,8 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 D_cost = D_fake - D_real + gradient_penalty
                 Wasserstein_D = D_real - D_fake
                 optimizerD.step()
+                break
+            break
 
         ############################
         # (2) Update G network
@@ -452,8 +455,8 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 
 if __name__ == '__main__':
     run_name = datetime.datetime.now().strftime('%Y:%m:%d:%H:%M:%S')
-    motion_length = 75
-    claim_length = 32
+    motion_length = 20
+    claim_length = 10
     embedding_dim = 256
     hidden_dim_G = 128
     hidden_dim_D = 300
@@ -474,7 +477,7 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     logger.addHandler(fh)
 
-    processed_data_dir = '../data_char'
+    processed_data_dir = '../data_histo_2'
     train_data_dir = os.path.join(processed_data_dir, 'train')
     test_data_dir = os.path.join(processed_data_dir, 'test')
     train_data_dir = os.path.join(processed_data_dir, 'train')
@@ -498,5 +501,5 @@ if __name__ == '__main__':
         netG = GeneratorEncDecTeacherForcing(batch_size, lexicon_count, motion_length, claim_length, hidden_dim_G, embedding_dim)
         netD = Discriminator(batch_size, lexicon_count, claim_length, hidden_dim_D)
 
-        netD, netG = pretrain(run_name=run_name, netD=netD, netG=netG, motion_length=motion_length, claim_length=claim_length, embedding_dim=embedding_dim, hidden_dim_G=hidden_dim_G, hidden_dim_D=hidden_dim_D, lam=lam, batch_size=batch_size, epochs=pretrain_epochs, num_words=lexicon_count, train_data_dir=train_data_dir, test_data_dir=test_data_dir)
+        # netD, netG = pretrain(run_name=run_name, netD=netD, netG=netG, motion_length=motion_length, claim_length=claim_length, embedding_dim=embedding_dim, hidden_dim_G=hidden_dim_G, hidden_dim_D=hidden_dim_D, lam=lam, batch_size=batch_size, epochs=pretrain_epochs, num_words=lexicon_count, train_data_dir=train_data_dir, test_data_dir=test_data_dir)
         train(run_name=run_name, netG=netG, netD=netD, motion_length=motion_length, claim_length=claim_length, embedding_dim=embedding_dim, hidden_dim_G=hidden_dim_G, hidden_dim_D=hidden_dim_D, lam=lam, batch_size=batch_size, epochs=epochs, iteration_d=iteration_d, num_words=lexicon_count, train_data_dir=train_data_dir, test_data_dir=test_data_dir)
