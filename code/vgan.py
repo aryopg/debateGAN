@@ -23,7 +23,7 @@ import torch.optim as optim
 from helpers.datagenerator import DataGenerator, FakeDataGenerator
 
 # from generator import GeneratorConvEncDec, GeneratorEncDec, GeneratorEncDecTeacherForcing, GeneratorVan
-from generator import GeneratorEncDecTeacherForcingV2 as GeneratorEncDecTeacherForcing
+from generator import GeneratorEncDecTeacherForcingV3 as GeneratorEncDecTeacherForcing
 from discriminator import Discriminator
 
 from helpers.utils import llprint
@@ -121,13 +121,16 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 llprint("\rTraining Discriminator : %d/%d ; Training step Discriminator : %d/%d" % (iter_d+1, iteration_d, training_step+1, training_steps))
                 _motion, _claim = training_generator.generate().next()
                 _claim = np.asarray(_claim)
-                real_claim = torch.from_numpy(_claim)
-                real_labels = torch.ones(real_claim.size(0),1)
+                real_claim_G = torch.from_numpy(np.argmax(_claim, 2))
+                real_claim_D = torch.from_numpy(_claim)
+                real_labels = torch.ones(real_claim_G.size(0),1)
 
                 if use_cuda:
-                    real_claim = real_claim.cuda(gpu)
+                    real_claim_G = real_claim_G.cuda(gpu)
+                    real_claim_D = real_claim_D.cuda(gpu)
                     real_labels = real_labels.cuda(gpu)
-                real_claim_v = autograd.Variable(real_claim)
+                real_claim_G_v = autograd.Variable(real_claim_G)
+                real_claim_D_v = autograd.Variable(real_claim_D)
                 real_labels = autograd.Variable(real_labels)
 
                 nn.utils.clip_grad_norm(netD.parameters(), 5.0)
@@ -136,7 +139,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 netD.zero_grad()
 
                 # train with real
-                _, D_real = netD(real_claim_v)
+                _, D_real = netD(real_claim_D_v)
                 D_real_loss = criterion(D_real, real_labels)
 
                 # train with motion
@@ -149,7 +152,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 real_motion_v = autograd.Variable(real_motion, volatile=True)
                 fake_labels = autograd.Variable(fake_labels)
 
-                fake = autograd.Variable(netG(real_motion_v, real_claim_v, 0.0).data)
+                fake = autograd.Variable(netG(real_motion_v, real_claim_G_v, 0.0).data)
                 inputv = fake
                 f_fake, D_fake = netD(inputv)
 
@@ -216,7 +219,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 _motion_test = np.asarray(motion_test)
                 _claim_test = np.asarray(claim_test)
                 real_motion_test = torch.LongTensor(_motion_test.tolist())
-                real_claim_test = torch.from_numpy(_claim_test)
+                real_claim_test = torch.from_numpy(np.argmax(_claim_test, 2))
                 if use_cuda:
                     real_motion_test = real_motion_test.cuda(gpu)
                     real_claim_test = real_claim_test.cuda(gpu)
@@ -238,7 +241,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 if __name__ == '__main__':
     run_name = datetime.datetime.now().strftime('%Y:%m:%d:%H:%M:%S')
     motion_length = 20
-    claim_length = 15
+    claim_length = 10
     embedding_dim = 256
     hidden_dim_G = 128
     hidden_dim_D = 300
@@ -247,7 +250,7 @@ if __name__ == '__main__':
     epochs = 1000000
     iteration_d = 5
     iteration_g = 1
-    batch_size = 256
+    batch_size = 1
 
     logger = logging.getLogger('eval_textGAN')
     logger.setLevel(logging.INFO)

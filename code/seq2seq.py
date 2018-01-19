@@ -23,7 +23,7 @@ import torch.optim as optim
 from helpers.datagenerator import DataGenerator, FakeDataGenerator
 
 # from generator import GeneratorConvEncDec, GeneratorEncDec, GeneratorEncDecTeacherForcing, GeneratorVan
-from generator import GeneratorEncDecTeacherForcingV2 as GeneratorEncDecTeacherForcing
+from generator import GeneratorEncDecTeacherForcingV3 as GeneratorEncDecTeacherForcing
 from discriminator import Discriminator
 
 from helpers.utils import llprint
@@ -139,7 +139,7 @@ def train(run_name, seq2seq, motion_length, claim_length, embedding_dim, hidden_
                 _motion_test = np.asarray(motion_test)
                 _claim_test = np.asarray(claim_test)
                 real_motion_test = torch.LongTensor(_motion_test.tolist())
-                real_claim_test = torch.from_numpy(_claim_test)
+                real_claim_test = torch.from_numpy(np.argmax(_claim_test, 2))
                 if use_cuda:
                     real_motion_test = real_motion_test.cuda(gpu)
                     real_claim_test = real_claim_test.cuda(gpu)

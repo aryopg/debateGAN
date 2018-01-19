@@ -1,0 +1,153 @@
+Motion: this <UNK> would abolish intellectual <UNK> <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would build the <UNK> xl pipeline <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that states should not subsidize the growing of <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would build high <UNK> for housing <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that wind <UNK> should be a <UNK> focus of <UNK> <UNK> supply <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would permit the <UNK> of performance enhancing <UNK> in professional <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would with <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that israel should lift the <UNK> of gaza <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that israel military operations <UNK> gaza were <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would <UNK> <UNK> <UNK> compulsory <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that israel should lift the <UNK> of gaza <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> <UNK> <UNK> <UNK> of <UNK> <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would subsidize <UNK> communities <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that the sale of <UNK> <UNK> games to <UNK> should be banned <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes the united states is responsible for mexico <UNK> <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would <UNK> <UNK> <UNK> abortions <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that the sale of <UNK> <UNK> games to <UNK> should be banned <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> <UNK> the policy of the <UNK> of <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that states should not subsidize the growing of <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would with <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes in the <UNK> of affirmative <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would <UNK> <UNK> <UNK> compulsory <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would encourage the creation of <UNK> <UNK> in the <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes in the <UNK> of affirmative <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes all nations have a right to nuclear weapons <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that israel should lift the <UNK> of gaza <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would <UNK> asean <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that <UNK> infant <UNK> is tantamount to <UNK> abuse <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes <UNK> deprivation causes <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes in the <UNK> of affirmative <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would build the <UNK> xl pipeline <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that endangered <UNK> should be protected <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that states should not subsidize the growing of <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that the <UNK> of england should be separated from the <UNK> state <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would <UNK> the american jobs <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would <UNK> <UNK> <UNK> abortions <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would <UNK> <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that <UNK> infant <UNK> is tantamount to <UNK> abuse <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would <UNK> playoffs in collegiate <UNK> american <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would abolish intellectual <UNK> <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that the right to asylum should not be absolute <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> <UNK> the policy of the <UNK> of <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that israel should lift the <UNK> of gaza <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes the united states is responsible for mexico <UNK> <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would build the <UNK> xl pipeline <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that israel military operations <UNK> gaza were <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that states should not subsidize the growing of <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> would with <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes that <UNK> <UNK> harm the <UNK> <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes in the <UNK> of affirmative <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
+Motion: this <UNK> believes in the <UNK> of affirmative <UNK> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD> <PAD>
+Generated Claim: <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS> <SOS>
+
