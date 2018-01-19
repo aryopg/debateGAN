@@ -365,7 +365,6 @@ class GeneratorEncDecTeacherForcingV3(nn.Module):
     def decode(self, SOS_token, encoder_output, encoder_hidden, target_output, teacher_forcing_ratio=0.8):
         decoder_output_full = autograd.Variable(torch.zeros(self.claim_length, self.batch_size, self.vocab_size))
         decoder_output_full = decoder_output_full.cuda() if use_cuda else decoder_output_full
-        print target_output
         target = target_output.permute(1,0)
 
         for idx in range(self.claim_length):
@@ -393,12 +392,10 @@ class GeneratorEncDecTeacherForcingV3(nn.Module):
                 decoder_output, decoder_hidden = self.decoder_gru(output, decoder_hidden)
                 decoder_output = F.log_softmax(self.out(decoder_hidden), dim=1)
                 topv, topi = decoder_output.data.topk(1)
-                # ni = topi[0][0]
-                # print("ni: ", ni)
+                ni = topi[0][0][0]
                 # decoder_input_v = autograd.Variable(torch.LongTensor([[ni]]))
-                decoder_input_v = autograd.Variable(torch.LongTensor(topi[0]))
-                decoder_input_v = decoder_input_v.cuda() if use_cuda else decoder_input_v
-                decoder_input = decoder_input_v
+                decoder_input = autograd.Variable(torch.LongTensor([[ni]]))
+                decoder_input = decoder_input.cuda() if use_cuda else decoder_input
                 # print decoder_input
                 decoder_output_full[idx, :, :] = decoder_output
 
