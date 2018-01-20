@@ -384,15 +384,15 @@ class GeneratorEncDecTeacherForcingV3(nn.Module):
 
             if use_teacher_forcing:
                 decoder_output, decoder_hidden = self.decoder_gru(output, decoder_hidden)
-                decoder_output = F.log_softmax(self.out(decoder_hidden), dim=1)
+                decoder_output = F.log_softmax(self.out(decoder_output), dim=1)
                 decoder_output_full[idx, :, :] = decoder_output
                 decoder_input = target[idx-1]  # Teacher forcing
 
             else:
                 decoder_output, decoder_hidden = self.decoder_gru(output, decoder_hidden)
-                decoder_output = F.log_softmax(self.out(decoder_hidden), dim=1)
+                decoder_output = F.log_softmax(self.out(decoder_hidden[0]), dim=1)
                 topv, topi = decoder_output.data.topk(1)
-                ni = topi[0][0][0]
+                ni = topi[0][0]
                 # decoder_input_v = autograd.Variable(torch.LongTensor([[ni]]))
                 decoder_input = autograd.Variable(torch.LongTensor([[ni]]))
                 decoder_input = decoder_input.cuda() if use_cuda else decoder_input
