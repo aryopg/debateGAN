@@ -36,10 +36,10 @@ use_cuda = torch.cuda.is_available()
 if use_cuda:
     gpu = 0
 
-processed_data_dir = '../data_histo'
+processed_data_dir = '../data_histo_2'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
-INV_LEXICON_DICTIONARY = pickle.load(open('../data_histo/lexicon-dict-inverse.pkl', 'rb'))
+INV_LEXICON_DICTIONARY = pickle.load(open('../data_histo_2/lexicon-dict-inverse.pkl', 'rb'))
 
 def decode(out):
     ret = []
@@ -248,9 +248,9 @@ if __name__ == '__main__':
     lam = 10
     pretrain_epochs = 1000
     epochs = 1000000
-    iteration_d = 5
+    iteration_d = 3
     iteration_g = 1
-    batch_size = 1
+    batch_size = 256
 
     logger = logging.getLogger('eval_textGAN')
     logger.setLevel(logging.INFO)
@@ -263,7 +263,7 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     logger.addHandler(fh)
 
-    processed_data_dir = '../data_histo'
+    processed_data_dir = '../data_histo_2'
     generated_data_dir = 'generated'
     pretraining_generated_data_dir = 'pretraining_generated'
     train_data_dir = os.path.join(processed_data_dir, 'train')
