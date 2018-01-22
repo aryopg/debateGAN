@@ -1,5 +1,5 @@
 """
-
+Last Updated : 22 jan 4:57 pm
 TODO:
 
 1. word tokenizer for all articles, motions, claims
@@ -72,7 +72,7 @@ def create_dictionary(articles, motions, claims, evidence):
     fobj = csv.reader(open(histogram, "rb"), delimiter = ',')
     for idx, line in enumerate(fobj):
         if idx == 0: continue
-        if (int(line[1]) > 6 ):
+        if (int(line[1]) >= 2 ):
             # print line[1]
             word = unicodedata.normalize('NFKD', line[0].decode('utf-8')).encode('ascii', 'ignore')
             if not word.lower() in lexicons_dict_histo and word.isalnum():
@@ -279,7 +279,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
         encoded_motion = []
         for idx, word in enumerate(word_tokenize(value)):
             if idx <= 25:
-                if word in lexicon_dictionary : 
+                if word.lower() in lexicon_dictionary: 
                     word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
                     if word.isalpha() or word == '?' or word == '.':
                         encoded_motion.append(lexicon_dictionary[word.lower()])
@@ -290,12 +290,12 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
         if len(word_tokenize(key)) > 4:
             for idx, word in enumerate(word_tokenize(key)):
                 if idx <= 10:
-                    if word in lexicon_dictionary:
+                    if word.lower() in lexicon_dictionary:
                         word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
                         if word.isalpha() or word == '?' or word == '.':
                             encoded_sentence.append(lexicon_dictionary[word.lower()])
                     else:
-                        encoded_motion.append(lexicon_dictionary['<UNK>'])
+                        encoded_sentence.append(lexicon_dictionary['<UNK>'])
 
         encoded_data.append({
             'input': {
@@ -312,22 +312,22 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
         encoded_motion = []
         for idx, word in enumerate(word_tokenize(value)):
             if idx <= 25:
-                if word in lexicon_dictionary:
+                if word.lower() in lexicon_dictionary:
                     word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
                     if word.isalpha() or word == '?' or word == '.':
                         encoded_motion.append(lexicon_dictionary[word.lower()])
                 else:
-                    encoded_motion.append('<UNK>')
+                    encoded_motion.append(lexicon_dictionary['<UNK>'])
         encoded_sentence = []
         if len(word_tokenize(key)) > 4:
             for idx, word in enumerate(word_tokenize(key)):
                 if idx <= 10:
-                    if word in lexicon_dictionary:
+                    if word.lower() in lexicon_dictionary:
                         word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
                         if word.isalpha() or word == '?' or word == '.':
                             encoded_sentence.append(lexicon_dictionary[word.lower()])
                     else:
-                        encoded_motion.append(lexicon_dictionary['<UNK>'])
+                        encoded_sentence.append(lexicon_dictionary['<UNK>'])
 
         encoded_data.append({
             'input': {
@@ -344,22 +344,22 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
         encoded_motion = []
         for idx, word in enumerate(word_tokenize(value)):
             if idx <= 25:
-                if word in lexicon_dictionary:
+                if word.lower() in lexicon_dictionary:
                     word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
                     if word.isalpha() or word == '?' or word == '.':
                         encoded_motion.append(lexicon_dictionary[word.lower()])
                 else:
-                    encoded_motion.append('<UNK>')
+                    encoded_motion.append(lexicon_dictionary['<UNK>'])
         encoded_sentence = []
         if len(word_tokenize(key)) > 4:
             for idx, word in enumerate(word_tokenize(key)):
                 if idx <= 10:
-                    if word in lexicon_dictionary:
+                    if word.lower() in lexicon_dictionary:
                         word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
                         if word.isalpha() or word == '?' or word == '.':
                             encoded_sentence.append(lexicon_dictionary[word.lower()])
                     else:
-                        encoded_motion.append(lexicon_dictionary['<UNK>'])
+                        encoded_sentence.append(lexicon_dictionary['<UNK>'])
 
         encoded_data.append({
             'input': {
