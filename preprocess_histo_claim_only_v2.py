@@ -197,6 +197,7 @@ def encode_data(motion_evidence_map, motion_claim_map, lexicon_dictionary, lexic
     for key, value in motion_evidence_map.iteritems():
         encoded_motion = []
         for idx, word in enumerate(word_tokenize(value)):
+            word = word.lower()
             if idx <= 25:
                 if word in lexicon_dictionary :
                     word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
@@ -208,6 +209,7 @@ def encode_data(motion_evidence_map, motion_claim_map, lexicon_dictionary, lexic
         encoded_sentence = []
         if len(word_tokenize(key)) > 4:
             for idx, word in enumerate(word_tokenize(key)):
+                word = word.lower()
                 if idx <= 10:
                     if word in lexicon_dictionary:
                         word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
@@ -230,6 +232,7 @@ def encode_data(motion_evidence_map, motion_claim_map, lexicon_dictionary, lexic
     for key, value in motion_claim_map.iteritems():
         encoded_motion = []
         for idx, word in enumerate(word_tokenize(value)):
+            word = word.lower()
             if idx <= 25:
                 if word in lexicon_dictionary:
                     word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
@@ -240,6 +243,7 @@ def encode_data(motion_evidence_map, motion_claim_map, lexicon_dictionary, lexic
         encoded_sentence = []
         if len(word_tokenize(key)) > 4:
             for idx, word in enumerate(word_tokenize(key)):
+                word = word.lower()
                 if idx <= 10:
                     if word in lexicon_dictionary:
                         word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
