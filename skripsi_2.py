@@ -167,7 +167,7 @@ epochs = 1000000
 iteration_d = 5
 batch_size = 1
 
-processed_data_dir = 'data_histo_claim_only'
+processed_data_dir = 'data_histo_2'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
 
@@ -704,6 +704,7 @@ def evaluateRandomly(encoder, decoder, n=10):
 #
 
 hidden_size = 256
+
 encoder1 = EncoderRNN(lexicon_count, hidden_size)
 attn_decoder1 = AttnDecoderRNN(hidden_size, lexicon_count,
                                1, dropout_p=0.1)
@@ -712,13 +713,23 @@ if use_cuda:
     encoder1 = encoder1.cuda()
     attn_decoder1 = attn_decoder1.cuda()
 
-trainIters(encoder1, attn_decoder1, 75000, print_every=1)
 
-######################################################################
-#
 
-evaluateRandomly(encoder1, attn_decoder1)
+def save_checkpoint(state, filename='s2s_pytorch_checkpoint.pth.tar'):
+    torch.save(state, filename)
 
+if not os.path.isfile('s2s_pytorch_checkpoint.pth.tar'):
+    trainIters(encoder1, attn_decoder1, 75000, print_every=1)
+
+    evaluateRandomly(encoder1, attn_decoder1)
+    save_checkpoint({
+                'encoder': encoder1,
+                'decoder': attn_decoder,
+            })
+else:
+    checkpoint = torch.load('s2s_pytorch_checkpoint.pth.tar')
+    encoder1.load_state_dict(checkpoint['encoder'])
+    attn_decoder1.load_state_dict(checkpoint['decoder'])
 
 ######################################################################
 # Visualizing Attention
@@ -733,6 +744,8 @@ evaluateRandomly(encoder1, attn_decoder1)
 # displayed as a matrix, with the columns being input steps and rows being
 # output steps:
 #
+
+
 
 output_words, attentions = evaluate(
     encoder1, attn_decoder1, "this house believes that the sale of violent video games to minors should be banned")
