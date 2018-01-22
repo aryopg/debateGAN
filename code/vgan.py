@@ -23,7 +23,8 @@ import torch.optim as optim
 from helpers.datagenerator import DataGenerator, FakeDataGenerator
 
 # from generator import GeneratorConvEncDec, GeneratorEncDec, GeneratorEncDecTeacherForcing, GeneratorVan
-from generator import GeneratorEncDecTeacherForcingV3 as GeneratorEncDecTeacherForcing
+# from generator import GeneratorEncDecTeacherForcingNoAtt as GeneratorEncDecTeacherForcing
+from generator import GeneratorEncDecTeacherForcingV4 as GeneratorEncDecTeacherForcing
 from discriminator import Discriminator
 
 from helpers.utils import llprint
@@ -250,7 +251,7 @@ if __name__ == '__main__':
     epochs = 1000000
     iteration_d = 3
     iteration_g = 1
-    batch_size = 256
+    batch_size = 64
 
     logger = logging.getLogger('eval_textGAN')
     logger.setLevel(logging.INFO)
