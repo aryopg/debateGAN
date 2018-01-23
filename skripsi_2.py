@@ -167,7 +167,7 @@ epochs = 1000000
 iteration_d = 5
 batch_size = 1
 
-processed_data_dir = 'data_histo_2'
+processed_data_dir = 'data_histo_no_article'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
 
@@ -443,11 +443,12 @@ def train(input_variable, target_variable, encoder, decoder, encoder_optimizer, 
     loss = 0
 
     for ei in range(input_length):
-        encoder_output, encoder_hidden = encoder(
-            input_variable[ei], encoder_hidden)
-        # print(encoder_output)
-        # print(encoder_output[0][0])
-        encoder_outputs[ei] = encoder_output[0][0]
+        if(input_variable[ei].data[0] != EOS_token):
+            encoder_output, encoder_hidden = encoder(
+                input_variable[ei], encoder_hidden)
+            # print(encoder_output)
+            # print(encoder_output[0][0])
+            encoder_outputs[ei] = encoder_output[0][0]
 
     # print(encoder_outputs)
 
@@ -616,8 +617,8 @@ def evaluate(encoder, decoder, sent, max_length=MAX_LENGTH):
     for word in sent.split(' '):
         if word in lexicon_dictionary:
             sentence.append(lexicon_dictionary[word])
-        else:
-            sentence.append(lexicon_dictionary['<UNK>'])
+        # else:
+        #     sentence.append(lexicon_dictionary['<UNK>'])
     sentence = np.asarray(sentence)
     input_variable = Variable(torch.LongTensor(sentence.tolist()).unsqueeze(1))
     input_length = input_variable.size()[0]
@@ -724,7 +725,7 @@ if not os.path.isfile('s2s_pytorch_checkpoint.pth.tar'):
     evaluateRandomly(encoder1, attn_decoder1)
     save_checkpoint({
                 'encoder': encoder1,
-                'decoder': attn_decoder,
+                'decoder': attn_decoder1,
             })
 else:
     checkpoint = torch.load('s2s_pytorch_checkpoint.pth.tar')
