@@ -1,4 +1,1 @@
-NEXT TODO :
-
-1. Beam Search
-2. Is tensor permutation a problem?
+DO NOT MERGE TO THE MASTER JUST YET
