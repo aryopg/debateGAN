@@ -153,8 +153,8 @@ use_cuda = torch.cuda.is_available()
 #
 
 SOS_token = 0
-EOS_token = 1
-MAX_LENGTH = 10
+EOS_token = 2
+MAX_LENGTH = 20
 
 motion_length = 20
 claim_length = 10
@@ -163,11 +163,11 @@ hidden_dim_G = 128
 hidden_dim_D = 300
 lam = 10
 pretrain_epochs = 150
-epochs = 1000000
+epochs = 1000
 iteration_d = 5
 batch_size = 1
 
-processed_data_dir = 'data_histo_2'
+processed_data_dir = 'data_histo_no_article'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
 
@@ -442,13 +442,13 @@ def train(input_variable, target_variable, encoder, decoder, encoder_optimizer, 
 
     loss = 0
 
-    for ei in range(max_length):
-        encoder_output, encoder_hidden = encoder(
-            input_variable[ei], encoder_hidden)
-        print(encoder_output)
-        print(encoder_output[0][0])
-        print(ei)
-        encoder_outputs[ei] = encoder_output[0][0]
+    for ei in range(input_length):
+        if(input_variable[ei].data[0] != EOS_token):
+            encoder_output, encoder_hidden = encoder(
+                input_variable[ei], encoder_hidden)
+            # print(encoder_output)
+            # print(encoder_output[0][0])
+            encoder_outputs[ei] = encoder_output[0][0]
 
     # print(encoder_outputs)
 
@@ -527,21 +527,21 @@ def timeSince(since, percent):
 # of examples, time so far, estimated time) and average loss.
 #
 
-def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=2, learning_rate=0.01):
+def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=2, learning_rate=5e-4):
     start = time.time()
     plot_losses = []
     print_loss_total = 0  # Reset every print_every
     plot_loss_total = 0  # Reset every plot_every
 
-    encoder_optimizer = optim.SGD(encoder.parameters(), lr=learning_rate)
-    decoder_optimizer = optim.SGD(decoder.parameters(), lr=learning_rate)
-    motions, claims = DataGenerator(lexicon_count=lexicon_count, motion_length=motion_length, claim_length=claim_length, num_data=num_train_data, data_dir=train_data_dir, batch_size=4, shuffle=True).generate().next()
+    encoder_optimizer = optim.Adam(encoder.parameters(), lr=learning_rate)
+    decoder_optimizer = optim.Adam(decoder.parameters(), lr=learning_rate)
+    motions, claims = DataGenerator(lexicon_count=lexicon_count, motion_length=motion_length, claim_length=claim_length, num_data=num_train_data, data_dir=train_data_dir, batch_size=num_train_data, shuffle=True).generate().next()
     # print(training_pairs)
     # training_pairs = [variablesFromPair(random.choice(pairs))
     #                   for i in range(n_iters)]
     criterion = nn.NLLLoss()
 
-    for iter in range(1, 4 + 1):
+    for iter in range(1, num_train_data + 1):
         # training_pair = training_pairs[iter - 1]
         # print(training_pair)
 
@@ -550,8 +550,8 @@ def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=2, learni
         motion = Variable(torch.LongTensor(motion.tolist()).unsqueeze(1))
         claim = Variable(torch.LongTensor(claim.tolist()).unsqueeze(1))
 
-        input_variable = motion
-        target_variable = claim
+        input_variable = motion.cuda() if use_cuda else motion
+        target_variable = claim.cuda() if use_cuda else claim
         # print(training_pair)
         # print(input_variable)
         # print(target_variable)
@@ -619,8 +619,8 @@ def evaluate(encoder, decoder, sent, max_length=MAX_LENGTH):
             sentence.append(lexicon_dictionary[word])
         else:
             sentence.append(lexicon_dictionary['<UNK>'])
-    sentence = np.asarray(sentence)
-    input_variable = Variable(torch.LongTensor(sentence.tolist()).unsqueeze(1))
+    sentence = Variable(torch.LongTensor(np.asarray(sentence).tolist()).unsqueeze(1))
+    input_variable = sentence.cuda() if use_cuda else sentence
     input_length = input_variable.size()[0]
     encoder_hidden = encoder.initHidden()
 
@@ -716,11 +716,12 @@ if use_cuda:
 
 
 
-def save_checkpoint(state, filename='s2s_pytorch_checkpoint.pth.tar'):
+def save_checkpoint(state, filename='s2s_pytorch_checkpoint_dynamic.pth.tar'):
     torch.save(state, filename)
 
-if not os.path.isfile('s2s_pytorch_checkpoint.pth.tar'):
-    trainIters(encoder1, attn_decoder1, 75000, print_every=1)
+if not os.path.isfile('s2s_pytorch_checkpoint_dynamic.pth.tar'):
+    for i in epochs:
+        trainIters(encoder1, attn_decoder1, 75000, print_every=100)
 
     evaluateRandomly(encoder1, attn_decoder1)
     save_checkpoint({
@@ -728,7 +729,7 @@ if not os.path.isfile('s2s_pytorch_checkpoint.pth.tar'):
                 'decoder': attn_decoder1,
             })
 else:
-    checkpoint = torch.load('s2s_pytorch_checkpoint.pth.tar')
+    checkpoint = torch.load('s2s_pytorch_checkpoint_dynamic.pth.tar')
     encoder1.load_state_dict(checkpoint['encoder'])
     attn_decoder1.load_state_dict(checkpoint['decoder'])
 
