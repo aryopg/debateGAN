@@ -154,7 +154,7 @@ use_cuda = torch.cuda.is_available()
 
 SOS_token = 0
 EOS_token = 1
-MAX_LENGTH = 20
+MAX_LENGTH = 10
 
 motion_length = 20
 claim_length = 10
@@ -442,11 +442,12 @@ def train(input_variable, target_variable, encoder, decoder, encoder_optimizer, 
 
     loss = 0
 
-    for ei in range(input_length):
+    for ei in range(max_length):
         encoder_output, encoder_hidden = encoder(
             input_variable[ei], encoder_hidden)
-        # print(encoder_output)
-        # print(encoder_output[0][0])
+        print(encoder_output)
+        print(encoder_output[0][0])
+        print(ei)
         encoder_outputs[ei] = encoder_output[0][0]
 
     # print(encoder_outputs)
@@ -534,13 +535,13 @@ def trainIters(encoder, decoder, n_iters, print_every=1000, plot_every=2, learni
 
     encoder_optimizer = optim.SGD(encoder.parameters(), lr=learning_rate)
     decoder_optimizer = optim.SGD(decoder.parameters(), lr=learning_rate)
-    motions, claims = DataGenerator(lexicon_count=lexicon_count, motion_length=motion_length, claim_length=claim_length, num_data=num_train_data, data_dir=train_data_dir, batch_size=num_train_data, shuffle=True).generate().next()
+    motions, claims = DataGenerator(lexicon_count=lexicon_count, motion_length=motion_length, claim_length=claim_length, num_data=num_train_data, data_dir=train_data_dir, batch_size=4, shuffle=True).generate().next()
     # print(training_pairs)
     # training_pairs = [variablesFromPair(random.choice(pairs))
     #                   for i in range(n_iters)]
     criterion = nn.NLLLoss()
 
-    for iter in range(1, num_train_data + 1):
+    for iter in range(1, 4 + 1):
         # training_pair = training_pairs[iter - 1]
         # print(training_pair)
 
@@ -626,7 +627,7 @@ def evaluate(encoder, decoder, sent, max_length=MAX_LENGTH):
     encoder_outputs = Variable(torch.zeros(max_length, encoder.hidden_size))
     encoder_outputs = encoder_outputs.cuda() if use_cuda else encoder_outputs
 
-    for ei in range(input_length):
+    for ei in range(max_length):
         encoder_output, encoder_hidden = encoder(input_variable[ei],
                                                  encoder_hidden)
         encoder_outputs[ei] = encoder_outputs[ei] + encoder_output[0][0]
@@ -724,7 +725,7 @@ if not os.path.isfile('s2s_pytorch_checkpoint.pth.tar'):
     evaluateRandomly(encoder1, attn_decoder1)
     save_checkpoint({
                 'encoder': encoder1,
-                'decoder': attn_decoder,
+                'decoder': attn_decoder1,
             })
 else:
     checkpoint = torch.load('s2s_pytorch_checkpoint.pth.tar')

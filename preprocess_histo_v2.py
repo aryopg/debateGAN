@@ -279,7 +279,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
         encoded_motion = []
         for idx, word in enumerate(word_tokenize(value)):
             if idx <= 25:
-                if word in lexicon_dictionary : 
+                if word in lexicon_dictionary :
                     word = re.compile('[%s]' % re.escape(string.punctuation)).sub('', word)
                     if word.isalpha() or word == '?' or word == '.':
                         encoded_motion.append(lexicon_dictionary[word.lower()])
@@ -295,7 +295,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                         if word.isalpha() or word == '?' or word == '.':
                             encoded_sentence.append(lexicon_dictionary[word.lower()])
                     else:
-                        encoded_motion.append(lexicon_dictionary['<UNK>'])
+                        encoded_sentence.append(lexicon_dictionary['<UNK>'])
 
         encoded_data.append({
             'input': {
@@ -317,7 +317,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                     if word.isalpha() or word == '?' or word == '.':
                         encoded_motion.append(lexicon_dictionary[word.lower()])
                 else:
-                    encoded_motion.append('<UNK>')
+                    encoded_motion.append(lexicon_dictionary['<UNK>'])
         encoded_sentence = []
         if len(word_tokenize(key)) > 4:
             for idx, word in enumerate(word_tokenize(key)):
@@ -327,7 +327,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                         if word.isalpha() or word == '?' or word == '.':
                             encoded_sentence.append(lexicon_dictionary[word.lower()])
                     else:
-                        encoded_motion.append(lexicon_dictionary['<UNK>'])
+                        encoded_sentence.append(lexicon_dictionary['<UNK>'])
 
         encoded_data.append({
             'input': {
@@ -349,7 +349,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                     if word.isalpha() or word == '?' or word == '.':
                         encoded_motion.append(lexicon_dictionary[word.lower()])
                 else:
-                    encoded_motion.append('<UNK>')
+                    encoded_motion.append(lexicon_dictionary['<UNK>'])
         encoded_sentence = []
         if len(word_tokenize(key)) > 4:
             for idx, word in enumerate(word_tokenize(key)):
@@ -359,7 +359,7 @@ def encode_data(motion_evidence_map, motion_claim_map, motion_article_map, lexic
                         if word.isalpha() or word == '?' or word == '.':
                             encoded_sentence.append(lexicon_dictionary[word.lower()])
                     else:
-                        encoded_motion.append(lexicon_dictionary['<UNK>'])
+                        encoded_sentence.append(lexicon_dictionary['<UNK>'])
 
         encoded_data.append({
             'input': {
