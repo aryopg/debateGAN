@@ -140,7 +140,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 netD.zero_grad()
 
                 # train with real
-                _, D_real = netD(real_claim_D_v)
+                f_real, D_real = netD(real_claim_D_v)
                 D_real_loss = criterion(D_real, real_labels)
 
                 # train with motion
@@ -159,7 +159,9 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
 
                 D_fake_loss = criterion(D_fake, fake_labels)
 
-                D_loss = D_real_loss + D_fake_loss
+                D_jsd_loss = jsdloss(f_real, f_fake)
+
+                D_loss = D_real_loss + D_fake_loss + D_jsd_loss
                 D_loss.backward()
                 optimizerD.step()
 
@@ -198,7 +200,7 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 f_fake, G = netD(fake)
                 f_real, _ = netD(real_claim_D_v)
 
-                G_loss = jsdloss(batch_size, f_real, f_fake)
+                G_loss = jsdloss(f_real, f_fake)
                 #G_loss = criterion(G, real_labels)
 
     	        # G_loss_total = G_loss + G_loss_van

@@ -66,7 +66,7 @@ class batchNLLLoss(nn.Module):
 #     def __init__(self):
 #         super(JSDLoss,self).__init__()
 #
-#     def forward(self, batch_size, f_real, f_synt):
+#     def forward(self, f_real, f_synt):
 #         assert f_real.size()[1] == f_synt.size()[1]
 #
 #         f_num_features = f_real.size()[1]
@@ -102,16 +102,17 @@ class JSDLoss(nn.Module):
     def __init__(self):
         super(JSDLoss,self).__init__()
 
-    def forward(self, batch_size, f_real, f_synt):
-        f_synt_target = autograd.Variable(f_synt.data)
-        f_real_target = autograd.Variable(f_real.data)
-        # f_synt_target = f_synt.detach()
-        # f_real_target = f_real.detach()
-        loss_g = (nn.KLDivLoss()(f_synt, f_synt_target) + nn.KLDivLoss()(f_synt, f_real_target) + nn.KLDivLoss()(f_real, f_real_target) + nn.KLDivLoss()(f_real, f_synt_target)) / 2
-        # print loss_g
-        # exit()
+    def forward(self, f_real, f_synt):
+        f_synt_target = F.log_softmax(autograd.Variable(f_synt.data))
+        f_real_target = F.log_softmax(autograd.Variable(f_real.data))
 
-        return loss_g
+        f_synt = F.softmax(f_synt)
+        f_real = F.softmax(f_real)
+
+        loss_g = (nn.KLDivLoss()(f_synt, f_synt_target) + nn.KLDivLoss()(f_synt, f_real_target) + nn.KLDivLoss()(f_real, f_real_target) + nn.KLDivLoss()(f_real, f_synt_target)) / 2
+        sqrt_loss_g = torch.sqrt(loss_g)
+
+        return sqrt_loss_g
 
 class MMDCovLoss(nn.Module):
     def __init__(self):
