@@ -37,10 +37,10 @@ use_cuda = torch.cuda.is_available()
 if use_cuda:
     gpu = 0
 
-processed_data_dir = '../data_histo_2'
+processed_data_dir = '../data_keras'
 train_data_dir = os.path.join(processed_data_dir, 'train')
 test_data_dir = os.path.join(processed_data_dir, 'test')
-INV_LEXICON_DICTIONARY = pickle.load(open('../data_histo_2/lexicon-dict-inverse.pkl', 'rb'))
+INV_LEXICON_DICTIONARY = pickle.load(open('../data_keras/lexicon-dict-inverse.pkl', 'rb'))
 
 def decode(out):
     ret = []
@@ -266,7 +266,7 @@ if __name__ == '__main__':
     ch.setFormatter(formatter)
     logger.addHandler(fh)
 
-    processed_data_dir = '../data_histo_2'
+    processed_data_dir = '../data_keras'
     generated_data_dir = 'generated'
     pretraining_generated_data_dir = 'pretraining_generated'
     train_data_dir = os.path.join(processed_data_dir, 'train')

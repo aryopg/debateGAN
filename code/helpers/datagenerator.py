@@ -58,8 +58,8 @@ class DataGenerator(object):
         Generates data of batch_size samples
         '''
         # Generate data
-        the_motion_input = np.ones((self.batch_size, self.motion_length), dtype=np.int32)*2 # <PAD> = 2
-        the_labels = np.ones((self.batch_size, self.claim_length, self.lexicon_count), dtype=np.float32)*2 # <PAD> = 2
+        the_motion_input = np.zeros((self.batch_size, self.motion_length), dtype=np.int32)*2 # <PAD> = 2
+        the_labels = np.zeros((self.batch_size, self.claim_length, self.lexicon_count), dtype=np.float32)*2 # <PAD> = 2
         for idx, ID in enumerate(list_IDs_temp):
             input_output = pickle.load(open(os.path.join(self.data_dir, os.path.basename('encoded_input_output') + '_' + str(ID+1) + '.pkl'), 'rb'))
 
@@ -129,7 +129,7 @@ class FakeDataGenerator(object):
         idx = 0
         for ID in list_IDs_temp:
             input_output = pickle.load(open(os.path.join(self.data_dir, os.path.basename('encoded_input_output') + '_' + str(ID+1) + '.pkl'), 'rb'))
-            
+
             if np.array(input_output['output']['encoded']).shape[0] <= self.claim_length:
                 claims[idx, :np.array(input_output['output']['encoded']).shape[0]] = to_categorical(np.array(input_output['output']['encoded']), num_classes=self.lexicon_count)
                 labels[idx] = 1.0
