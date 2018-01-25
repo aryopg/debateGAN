@@ -76,8 +76,8 @@ for sentence in claims:
 X = np.asarray(X)
 Y = np.asarray(Y)
 
-X = pad_sequences(X,maxlen=20)
-Y = pad_sequences(Y,maxlen=20)
+X = pad_sequences(X,maxlen=20, padding='post')
+Y = pad_sequences(Y,maxlen=20, padding='post')
 
 encoded_data = []
 for i in range(len(X)):
