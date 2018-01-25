@@ -283,14 +283,6 @@ if __name__ == '__main__':
     else:
         lexicon_dictionary = pickle.load(open(os.path.join(processed_data_dir, 'lexicon-dict.pkl'), 'rb'))
 
-        # append used punctuation to dictionary
-        if not '?' in lexicon_dictionary:
-            lexicon_dictionary['?'] = lexicon_count
-        if not '.' in lexicon_dictionary:
-            lexicon_dictionary['.'] = lexicon_count + 1
-        if not '-' in lexicon_dictionary:
-            lexicon_dictionary['-'] = lexicon_count + 2
-
         lexicon_count = len(lexicon_dictionary)
 
         netG = GeneratorEncDecTeacherForcing(batch_size, lexicon_count, motion_length, claim_length, hidden_dim_G, embedding_dim)
