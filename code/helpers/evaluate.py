@@ -1,6 +1,7 @@
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 import sys
 import csv
+import datetime
 try:
     import cPickle as pickle
 except:
@@ -24,8 +25,11 @@ class BleuScore():
 	def __init__(self, candidate, motion):
 		self.smoothing = SmoothingFunction().method2
 		self.claims_list = '../dataset/claims.txt'
-		self.candidate = word_tokenize(candidate.lower())
-		self.motion = motion.lower()
+		# self.candidate = word_tokenize(candidate.lower())
+		# self.motion = motion.lower()
+		self.candidate = candidate
+		self.motion = motion
+		
 		self.reference = {}
 
 		# Make evaluation data
@@ -55,19 +59,36 @@ class BleuScore():
 				self.reference[sentence_motion.lower()].append(word_tokenize(cleaned_claim.lower()))
 	
 		# BLEU SCORE
-		print('BLEU score : %f'%sentence_bleu(self.reference[self.motion], self.candidate, smoothing_function=self.smoothing))
+		# print('BLEU score : %f'%sentence_bleu(self.reference[self.motion], self.candidate, smoothing_function=self.smoothing))
 
 		# Unigram
-		print('BLEU score for unigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(1,0,0,0), smoothing_function=self.smoothing))
+		# print('BLEU score for unigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(1,0,0,0), smoothing_function=self.smoothing))
 
 		# 2-Gram
-		print('BLEU score for bigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,1,0,0), smoothing_function=self.smoothing))
+		# print('BLEU score for bigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,1,0,0), smoothing_function=self.smoothing))
 
 		# 3-Gram
-		print('BLEU score for trigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,0,1,0), smoothing_function=self.smoothing))
+		# print('BLEU score for trigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,0,1,0), smoothing_function=self.smoothing))
 
 		# 4-Gram
-		print('BLEU score for 4-gram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,0,0,1), smoothing_function=self.smoothing))
+		# print('BLEU score for 4-gram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,0,0,1), smoothing_function=self.smoothing))
 
 		# Combination
-		print('Cumulative BLEU score : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0.25,0.25,0.25,0.25), smoothing_function=self.smoothing))
+		# print('Cumulative BLEU score : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0.25,0.25,0.25,0.25), smoothing_function=self.smoothing))
+
+		# Write to CSV
+		with open('evaluation_'+ datetime.datetime.now().strftime("%Y-%m-%d:%H:%M:%S") +'.csv', 'wb') as csvfile:
+			csvWriter = csv.writer(csvfile, delimiter='	')
+			csvWriter.writerow(['No','Motion','Claim','Bleu Score','Unigram','Bigram','Trigram','4-Gram','Cumulative'])
+
+			for i in range(len(candidate)):
+				c = word_tokenize(self.candidate[i].lower())
+				m = self.motion[i].lower()
+
+				score1 = sentence_bleu(self.reference[m], c, smoothing_function=self.smoothing)
+				score2 = sentence_bleu(self.reference[m], c, weights=(1,0,0,0), smoothing_function=self.smoothing)
+				score3 = sentence_bleu(self.reference[m], c, weights=(0,1,0,0), smoothing_function=self.smoothing)
+				score4 = sentence_bleu(self.reference[m], c, weights=(0,0,1,0), smoothing_function=self.smoothing)
+				score5 = sentence_bleu(self.reference[m], c, weights=(0,0,0,1), smoothing_function=self.smoothing)
+				score6 = sentence_bleu(self.reference[m], c, weights=(0.25,0.25,0.25,0.25), smoothing_function=self.smoothing)
+				csvWriter.writerow([i+1, self.motion[i], self.candidate[i], score1, score2, score3, score4, score5, score6])
