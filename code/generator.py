@@ -652,7 +652,7 @@ class GeneratorEncDecTeacherForcingNoAttSelu(nn.Module):
         out will then be processed by Discriminator
     """
     def __init__(self, batch_size, vocab_size, motion_size, claim_size, hidden_dim, embedding_dim, n_layers=2, dropout_p=0.5):
-        super(GeneratorEncDecTeacherForcingNoAtt, self).__init__()
+        super(GeneratorEncDecTeacherForcingNoAttSelu, self).__init__()
 
         self.hidden_dim = hidden_dim
         self.batch_size = batch_size
@@ -735,7 +735,7 @@ class GeneratorEncDecTeacherForcingNoAttSelu(nn.Module):
         return gen_output
 
     def initHidden(self):
-        result = autograd.Variable(torch.zeros(1, 1, self.hidden_dim))
+        result = autograd.Variable(torch.zeros(1, self.batch_size, self.hidden_dim))
         if use_cuda:
             return result.cuda()
         else:
