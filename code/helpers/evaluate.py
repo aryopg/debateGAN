@@ -17,11 +17,27 @@ from os.path import join, isfile, isdir, dirname, basename, normpath, abspath, e
 
 from nltk.tokenize import sent_tokenize, word_tokenize
 
+################################################################################################################
+# candidate : String of candidate sentence
+# motion : string of motion
+#
+# HOW TO USE : 
+# from helpers.evaluate import BleuScore
+#
+# candidates = ['This is a test','This is a test','This is a test','This is a test','This is a test','This is a test','This is a test']
+#
+# motions = ['This house would embrace multiculturalism',
+# 'This house would ban gambling',
+# 'This house would ban boxing',
+# 'This house believes in the use of affirmative action',
+# 'This house would permit the use of performance enhancing drugs in professional sports',
+# 'This house supports the one-child policy of the republic of China',
+# 'This house would build the Keystone XL pipeline']
+#
+# BleuScore(candidate=candidates, motion=motions)
+################################################################################################################
+
 class BleuScore():
-	################################################################################################################
-	# candidate : String of candidate sentence
-	# motion : string of motion
-	################################################################################################################
 	def __init__(self, candidate, motion):
 		self.smoothing = SmoothingFunction().method2
 		self.claims_list = '../dataset/claims.txt'
@@ -58,23 +74,6 @@ class BleuScore():
 					self.reference[sentence_motion.lower()] = []
 				self.reference[sentence_motion.lower()].append(word_tokenize(cleaned_claim.lower()))
 	
-		# BLEU SCORE
-		# print('BLEU score : %f'%sentence_bleu(self.reference[self.motion], self.candidate, smoothing_function=self.smoothing))
-
-		# Unigram
-		# print('BLEU score for unigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(1,0,0,0), smoothing_function=self.smoothing))
-
-		# 2-Gram
-		# print('BLEU score for bigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,1,0,0), smoothing_function=self.smoothing))
-
-		# 3-Gram
-		# print('BLEU score for trigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,0,1,0), smoothing_function=self.smoothing))
-
-		# 4-Gram
-		# print('BLEU score for 4-gram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,0,0,1), smoothing_function=self.smoothing))
-
-		# Combination
-		# print('Cumulative BLEU score : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0.25,0.25,0.25,0.25), smoothing_function=self.smoothing))
 
 		# Write to CSV
 		with open('evaluation_'+ datetime.datetime.now().strftime("%Y-%m-%d:%H:%M:%S") +'.csv', 'wb') as csvfile:
