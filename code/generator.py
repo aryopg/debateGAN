@@ -637,6 +637,110 @@ class GeneratorEncDecTeacherForcingNoAtt(nn.Module):
         else:
             return result
 
+class GeneratorEncDecTeacherForcingNoAttSelu(nn.Module):
+    """
+        The Generator will first take a motion, and process it. It will go to the embedding layer, and to the GRU layer afterwards.
+        After the GRU layer, we can use attention layer similar to Seq2Seq model.
+
+        Flow:
+        motion [batch_size, seq_length]
+        embedded_motion [batch_size, seq_length, embedding_dim]
+        GRU_1_out [batch_size, seq_length, hidden_dim]
+        GRU_2_out [batch_size, seq_length, hidden_dim]
+        out [batch_size, seq_length, vocab_size]
+
+        out will then be processed by Discriminator
+    """
+    def __init__(self, batch_size, vocab_size, motion_size, claim_size, hidden_dim, embedding_dim, n_layers=2, dropout_p=0.5):
+        super(GeneratorEncDecTeacherForcingNoAttSelu, self).__init__()
+
+        self.hidden_dim = hidden_dim
+        self.batch_size = batch_size
+        self.motion_length = motion_size
+        self.claim_length = claim_size
+        self.vocab_size = vocab_size
+
+        self.dropout = nn.Dropout(dropout_p)
+        self.encoder_embeddings = nn.Embedding(vocab_size, embedding_dim)
+        self.encoder_gru = nn.GRU(embedding_dim, hidden_dim)#, n_layers, dropout=0.5, batch_first=True)
+
+        self.selu = nn.SELU()
+        self.decoder_embeddings = nn.Embedding(vocab_size, hidden_dim)
+        self.decoder_gru = nn.GRU(hidden_dim, hidden_dim)
+        self.out = nn.Linear(hidden_dim, vocab_size)
+        self.softmax = nn.LogSoftmax()
+
+    def encode(self, motion):
+        motion = motion.permute(1,0)
+        encoder_outputs = autograd.Variable(torch.zeros(self.motion_length, self.batch_size, self.hidden_dim))
+        encoder_outputs = encoder_outputs.cuda() if use_cuda else encoder_outputs
+        for idx, motion_word in enumerate(motion):
+            if idx == 0:
+                encoder_hidden = self.initHidden()
+            embedded = self.encoder_embeddings(motion_word).view(1, self.batch_size, -1)
+            encoder_output, encoder_hidden = self.encoder_gru(embedded, encoder_hidden) #[batch_size, seq_length, hidden_dim]
+            encoder_outputs[idx] = encoder_output[0]
+        return encoder_outputs, encoder_hidden
+
+    def decode(self, SOS_token, encoder_output, encoder_hidden, target_output, teacher_forcing_ratio=0.8):
+        decoder_output_full = autograd.Variable(torch.zeros(self.claim_length, self.batch_size, self.vocab_size))
+        decoder_output_full = decoder_output_full.cuda() if use_cuda else decoder_output_full
+        target = target_output.permute(1,0)
+
+        for idx in range(self.claim_length):
+            if idx == 0:
+                decoder_input = SOS_token
+                decoder_hidden = encoder_hidden
+            output = self.decoder_embeddings(decoder_input).view(1, self.batch_size, -1)
+            output = self.dropout(output)
+
+            output = self.selu(output)
+
+            use_teacher_forcing = True# if random.random() < teacher_forcing_ratio else False
+
+            if use_teacher_forcing:
+                decoder_output, decoder_hidden = self.decoder_gru(output, decoder_hidden)
+                decoder_output = F.log_softmax(self.out(decoder_output[0]), dim=1)
+                decoder_output_full[idx, :, :] = decoder_output
+                decoder_input = target[idx-1]  # Teacher forcing
+
+            else:
+                decoder_output, decoder_hidden = self.decoder_gru(output, decoder_hidden)
+                decoder_output = F.log_softmax(self.out(decoder_output[0]), dim=1)
+                topv, topi = decoder_output.data.topk(1)
+                ni = topi[0][0]
+                # decoder_input_v = autograd.Variable(torch.LongTensor([[ni]]))
+                decoder_input = autograd.Variable(torch.LongTensor([[ni]]))
+                decoder_input = decoder_input.cuda() if use_cuda else decoder_input
+                # print decoder_input
+                decoder_output_full[idx, :, :] = decoder_output
+
+        decoder_output_full = decoder_output_full.permute(1,0,2)
+
+        # gen_output = self.softmax(self.out(decoder_output_full))
+
+        return decoder_output_full
+
+    def forward(self, motion, target_output, teacher_forcing_ratio=0.8):
+        encoder_output, encoder_hidden = self.encode(motion)
+
+        SOS_token = np.zeros((self.batch_size,1), dtype=np.int32)
+        SOS_token = torch.LongTensor(SOS_token.tolist())
+        SOS_token = autograd.Variable(SOS_token)
+        if use_cuda:
+            SOS_token = SOS_token.cuda(gpu)
+
+        gen_output = self.decode(SOS_token, encoder_output, encoder_hidden, target_output, teacher_forcing_ratio)
+
+        return gen_output
+
+    def initHidden(self):
+        result = autograd.Variable(torch.zeros(1, self.batch_size, self.hidden_dim))
+        if use_cuda:
+            return result.cuda()
+        else:
+            return result
+
 class GeneratorVan(nn.Module):
     """
         The Generator will first take a motion, and process it. It will go to the embedding layer, and to the GRU layer afterwards.
