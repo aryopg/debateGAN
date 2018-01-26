@@ -16,55 +16,58 @@ from os.path import join, isfile, isdir, dirname, basename, normpath, abspath, e
 
 from nltk.tokenize import sent_tokenize, word_tokenize
 
-class Evaluate():
-	def __init__(self, candidate, motion, claims):
-        super(Evaluate, self).__init__()
+class BleuScore():
+	################################################################################################################
+	# candidate : String of candidate sentence
+	# motion : string of motion
+	################################################################################################################
+	def __init__(self, candidate, motion):
+		self.smoothing = SmoothingFunction().method2
+		self.claims_list = '../dataset/claims.txt'
+		self.candidate = word_tokenize(candidate.lower())
+		self.motion = motion.lower()
+		self.reference = {}
 
-        self.chencherry = SmoothingFunction()
- 		self.claims_list = '../../dataset/claims.txt'
-        self.candidate = candidate
-        self.motion = motion
-        self.reference = []
-
-        # Make evaluation data
-		fobj = csv.reader(open(claims_list, "rb"), delimiter = '\t')
+		# Make evaluation data
+		fobj = csv.reader(open(self.claims_list, "rb"), delimiter = '\t')
 		for idx, line in enumerate(fobj):
-		    if idx ==0: continue
-		    sentence_temp = unicodedata.normalize('NFKD', line[2].decode('utf-8')).encode('ascii', 'ignore')
-		    sentence_temp = sentence_temp.replace('.', '')
-		    sentence_temp = sentence_temp.replace('?', '')
-		    sentence_temp = sentence_temp.replace('"', '')
-		    sentence_temp = sentence_temp.replace('\'', '')
-		    sentence_temp = sentence_temp.replace('(', '')
-		    sentence_temp = sentence_temp.replace(')', '')
-		    sentence_temp = sentence_temp.replace('%', '')
-		    sentence_temp = sentence_temp.replace('$', '')
-		    sentence_temp = sentence_temp.replace(',', '')
-		    cleaned_claim = sentence_temp.replace('[REF]', '')
+			if idx ==0: continue
+			sentence_temp = unicodedata.normalize('NFKD', line[2].decode('utf-8')).encode('ascii', 'ignore')
+			sentence_temp = sentence_temp.replace('.', '')
+			sentence_temp = sentence_temp.replace('?', '')
+			sentence_temp = sentence_temp.replace('"', '')
+			sentence_temp = sentence_temp.replace('\'', '')
+			sentence_temp = sentence_temp.replace('(', '')
+			sentence_temp = sentence_temp.replace(')', '')
+			sentence_temp = sentence_temp.replace('%', '')
+			sentence_temp = sentence_temp.replace('$', '')
+			sentence_temp = sentence_temp.replace(',', '')
+			cleaned_claim = sentence_temp.replace('[REF]', '')
 
-		    sentence_motion = unicodedata.normalize('NFKD', line[0].decode('utf-8')).encode('ascii', 'ignore')
+			sentence_motion = unicodedata.normalize('NFKD', line[0].decode('utf-8')).encode('ascii', 'ignore')
 
-		    tokenized_claim = word_tokenize(cleaned_claim.lower())
-		    if len(tokenized_claim) < 5:
-		    	continue
-		    else:
-		    	self.reference[sentence_motion].append(word_tokenize(cleaned_claim.lower()))
-
-	def BleuScore ():
+			tokenized_claim = word_tokenize(cleaned_claim.lower())
+			if len(tokenized_claim) < 5:
+				continue
+			else:
+				if not sentence_motion.lower() in self.reference:
+					self.reference[sentence_motion.lower()] = []
+				self.reference[sentence_motion.lower()].append(word_tokenize(cleaned_claim.lower()))
+	
 		# BLEU SCORE
-		print('BLEU score : %f'%sentence_bleu(self.reference[self.topic], self.candidate))
+		print('BLEU score : %f'%sentence_bleu(self.reference[self.motion], self.candidate, smoothing_function=self.smoothing))
 
 		# Unigram
-		print('BLEU score for unigram : %f'%sentence_bleu(self.reference[self.topic], self.candidate, weights=(1,0,0,0), smoothing_function=chencherry.method4))
+		print('BLEU score for unigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(1,0,0,0), smoothing_function=self.smoothing))
 
 		# 2-Gram
-		print('BLEU score for bigram : %f'%sentence_bleu(self.reference[self.topic], self.candidate, weights=(0,1,0,0), smoothing_function=chencherry.method4))
+		print('BLEU score for bigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,1,0,0), smoothing_function=self.smoothing))
 
 		# 3-Gram
-		print('BLEU score for trigram : %f'%sentence_bleu(self.reference[self.topic], self.candidate, weights=(0,0,1,0), smoothing_function=chencherry.method4))
+		print('BLEU score for trigram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,0,1,0), smoothing_function=self.smoothing))
 
 		# 4-Gram
-		print('BLEU score for 4-gram : %f'%sentence_bleu(self.reference[self.topic], self.candidate, weights=(0,0,0,1), smoothing_function=chencherry.method4))
+		print('BLEU score for 4-gram : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0,0,0,1), smoothing_function=self.smoothing))
 
 		# Combination
-		print('Cumulative BLEU score : %f'%sentence_bleu(self.reference[self.topic], self.candidate, weights=(0.25,0.25,0.25,0.25), smoothing_function=chencherry.method4))
+		print('Cumulative BLEU score : %f'%sentence_bleu(self.reference[self.motion], self.candidate, weights=(0.25,0.25,0.25,0.25), smoothing_function=self.smoothing))
