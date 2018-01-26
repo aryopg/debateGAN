@@ -24,7 +24,7 @@ from helpers.datagenerator_keras import DataGenerator, FakeDataGenerator
 
 # from generator import GeneratorConvEncDec, GeneratorEncDec, GeneratorEncDecTeacherForcing, GeneratorVan
 # from generator import GeneratorEncDecTeacherForcingNoAtt as GeneratorEncDecTeacherForcing
-from generator import GeneratorEncDecTeacherForcingNoAtt as GeneratorEncDecTeacherForcing
+from generator import GeneratorEncDecTeacherForcingNoAttSelu as GeneratorEncDecTeacherForcing
 from discriminator import Discriminator
 
 from helpers.utils import llprint
@@ -400,8 +400,8 @@ def train(run_name, netG, netD, motion_length, claim_length, embedding_dim, hidd
                 f_fake, G = netD(fake)
                 f_real, _ = netD(real_claim_D_v)
 
-                # G_loss = jsdloss(f_real, f_fake)
-                G_loss = criterion(G, real_labels)
+                G_loss = jsdloss(f_real, f_fake)
+                # G_loss = criterion(G, real_labels)
 
     	        # G_loss_total = G_loss + G_loss_van
 
