@@ -81,7 +81,7 @@ class BleuScore():
 			csvWriter.writerow(['No','Motion','Claim','Bleu Score','Unigram','Bigram','Trigram','4-Gram','Cumulative'])
 
 			for i in range(len(candidate)):
-				c = word_tokenize(self.candidate[i].lower())
+				c = word_tokenize(self.candidate[i].lower().replace('<UNK>','').replace('<EOS>',''))
 				m = self.motion[i].lower()
 
 				score1 = sentence_bleu(self.reference[m], c, smoothing_function=self.smoothing)
@@ -91,3 +91,5 @@ class BleuScore():
 				score5 = sentence_bleu(self.reference[m], c, weights=(0,0,0,1), smoothing_function=self.smoothing)
 				score6 = sentence_bleu(self.reference[m], c, weights=(0.25,0.25,0.25,0.25), smoothing_function=self.smoothing)
 				csvWriter.writerow([i+1, self.motion[i], self.candidate[i], score1, score2, score3, score4, score5, score6])
+
+		print 'Evaluation Done! Saved To Disk!'
