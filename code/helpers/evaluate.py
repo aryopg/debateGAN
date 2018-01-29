@@ -47,6 +47,8 @@ class BleuScore():
 		self.motion = motion
 		
 		self.reference = {}
+		# self.lexicon_dictionary = pickle.load(open('../data_histo_no_article/lexicon-dict.pkl', 'rb'))
+		self.lexicon_dictionary = pickle.load(open('lexicon-dict.pkl', 'rb'))
 
 		# Make evaluation data
 		fobj = csv.reader(open(self.claims_list, "rb"), delimiter = '\t')
@@ -63,10 +65,30 @@ class BleuScore():
 			sentence_temp = sentence_temp.replace('$', '')
 			sentence_temp = sentence_temp.replace(',', '')
 			cleaned_claim = sentence_temp.replace('[REF]', '')
+			cleaned_claim = cleaned_claim.lower()
 
 			sentence_motion = unicodedata.normalize('NFKD', line[0].decode('utf-8')).encode('ascii', 'ignore')
 
 			tokenized_claim = word_tokenize(cleaned_claim.lower())
+			for idx,word in enumerate(tokenized_claim):
+				if word not in self.lexicon_dictionary:
+					print ("%s is not in dictionary"%word)
+					tokenized_claim[idx] = '<unk>'
+					# cleaned_claim = cleaned_claim.replace(word,'444')
+			# tokenized_claim = word_tokenize(cleaned_claim)
+			tokenized_claim.append('<eos>')
+
+
+
+			# a=[1,2,3,4,5,1,2,3,4,5,1]
+			# for n,i in enumerate(a):
+			# 	if i==1:
+			# 		a[n]=10
+
+			print tokenized_claim
+			# print cleaned_claim
+
+
 			if len(tokenized_claim) < 5:
 				continue
 			else:
@@ -81,7 +103,7 @@ class BleuScore():
 			csvWriter.writerow(['No','Motion','Claim','Bleu Score','Unigram','Bigram','Trigram','4-Gram','Cumulative'])
 
 			for i in range(len(candidate)):
-				c = word_tokenize(self.candidate[i].lower().replace('<UNK>','').replace('<EOS>',''))
+				c = word_tokenize(self.candidate[i].lower())
 				m = self.motion[i].lower()
 
 				score1 = sentence_bleu(self.reference[m], c, smoothing_function=self.smoothing)
