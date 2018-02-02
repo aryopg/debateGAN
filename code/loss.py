@@ -29,6 +29,14 @@ use_cuda = torch.cuda.is_available()
 if use_cuda:
     gpu = 0
 
+def cov(x):
+    mean_x = torch.mean(x, 0)
+    xm = x.sub(mean_x.expand_as(x))
+    c = xm.mm(xm.t())
+    c = c / (x.size(1) - 1)
+
+    return c, mean_x
+
 def _assert_no_grad(variable):
     assert not variable.requires_grad, \
         "nn criterions don't compute the gradient w.r.t. targets - please " \
@@ -62,57 +70,66 @@ class batchNLLLoss(nn.Module):
 
         return loss
 
-# class JSDLoss(nn.Module):
-#     def __init__(self):
-#         super(JSDLoss,self).__init__()
-#
-#     def forward(self, f_real, f_synt):
-#         assert f_real.size()[1] == f_synt.size()[1]
-#
-#         f_num_features = f_real.size()[1]
-#         batch_size = f_real.size()[0]
-#         identity = autograd.Variable(torch.eye(f_num_features)*0.1)
-#
-#         if use_cuda:
-#             identity = identity.cuda(gpu)
-#
-#         f_real_mean = torch.mean(f_real, 0, keepdim=True)
-#         f_synt_mean = torch.mean(f_synt, 0, keepdim=True)
-#
-#         dev_f_real = f_real - f_real_mean.expand(batch_size,f_num_features) # batch_size x num_feat
-#         dev_f_synt = f_synt - f_synt_mean.expand(batch_size,f_num_features) # batch_size x num_feat
-#
-#         f_real_xx = torch.mm(torch.t(dev_f_real), dev_f_real) # num_feat x batch_size * batch_size x num_feat = num_feat x num_feat
-#         f_synt_xx = torch.mm(torch.t(dev_f_synt), dev_f_synt) # num_feat x batch_size * batch_size x num_feat = num_feat x num_feat
-#
-#         cov_mat_f_real = f_real_xx / (batch_size - 1) - torch.mm(f_real_mean, torch.t(f_real_mean)) + identity # num_feat x num_feat
-#         cov_mat_f_synt = f_synt_xx / (batch_size - 1) - torch.mm(f_synt_mean, torch.t(f_synt_mean)) + identity # num_feat x num_feat
-#
-#         cov_mat_f_real_inv = torch.inverse(cov_mat_f_real)
-#         cov_mat_f_synt_inv = torch.inverse(cov_mat_f_synt)
-#
-#         temp1 = torch.trace(torch.add(torch.mm(cov_mat_f_synt_inv, torch.t(cov_mat_f_real)), torch.mm(cov_mat_f_real_inv, torch.t(cov_mat_f_synt))))
-#         temp1 = temp1.view(1,1)
-#         temp2 = torch.mm(torch.mm((f_synt_mean - f_real_mean), (cov_mat_f_synt_inv + cov_mat_f_real_inv)), torch.t(f_synt_mean - f_real_mean))
-#         loss_g = temp1 + temp2
-#
-#         return loss_g
-
 class JSDLoss(nn.Module):
     def __init__(self):
         super(JSDLoss,self).__init__()
 
     def forward(self, f_real, f_synt):
-        f_synt_target = F.log_softmax(autograd.Variable(f_synt.data))
-        f_real_target = F.log_softmax(autograd.Variable(f_real.data))
+        assert f_real.size()[1] == f_synt.size()[1]
 
-        f_synt = F.softmax(f_synt)
-        f_real = F.softmax(f_real)
+        f_num_features = f_real.size()[1]
+        batch_size = f_real.size()[0]
+        identity = autograd.Variable(torch.eye(f_num_features)*0.1)
 
-        loss_g = (nn.KLDivLoss()(f_synt, f_synt_target) + nn.KLDivLoss()(f_synt, f_real_target) + nn.KLDivLoss()(f_real, f_real_target) + nn.KLDivLoss()(f_real, f_synt_target)) / 2
-        sqrt_loss_g = torch.sqrt(loss_g)
+        if use_cuda:
+            identity = identity.cuda(gpu)
 
-        return sqrt_loss_g
+        cov_real, mean_real = cov(f_real)
+        cov_fake, mean_fake = cov(f_synt)
+        
+        f_real_mean = torch.mean(f_real, 0, keepdim=True)
+        f_synt_mean = torch.mean(f_synt, 0, keepdim=True)
+
+        dev_f_real = f_real - f_real_mean.expand(batch_size,f_num_features) # batch_size x num_feat
+        dev_f_synt = f_synt - f_synt_mean.expand(batch_size,f_num_features) # batch_size x num_feat
+
+        f_real_xx = torch.mm(torch.t(dev_f_real), dev_f_real) # num_feat x batch_size * batch_size x num_feat = num_feat x num_feat
+        f_synt_xx = torch.mm(torch.t(dev_f_synt), dev_f_synt) # num_feat x batch_size * batch_size x num_feat = num_feat x num_feat
+
+        cov_mat_f_real = f_real_xx / (batch_size) - torch.mm(f_real_mean, torch.t(f_real_mean)) + identity # num_feat x num_feat
+        cov_mat_f_synt = f_synt_xx / (batch_size) - torch.mm(f_synt_mean, torch.t(f_synt_mean)) + identity # num_feat x num_feat
+
+        # assert mean_real == f_real_mean.squeeze()
+        # assert mean_fake == f_synt_mean.squeeze()
+        assert cov_real == cov_mat_f_real
+        assert cov_fake == cov_mat_f_synt
+
+        cov_mat_f_real_inv = torch.inverse(cov_mat_f_real)
+        cov_mat_f_synt_inv = torch.inverse(cov_mat_f_synt)
+
+        temp1 = torch.trace(torch.add(torch.mm(cov_mat_f_synt_inv, torch.t(cov_mat_f_real)), torch.mm(cov_mat_f_real_inv, torch.t(cov_mat_f_synt))))
+        temp1 = temp1.view(1,1)
+        temp2 = torch.mm(torch.mm((f_synt_mean - f_real_mean), (cov_mat_f_synt_inv + cov_mat_f_real_inv)), torch.t(f_synt_mean - f_real_mean))
+        loss_g = temp1 + temp2
+
+        return loss_g
+
+# class JSDLoss(nn.Module):
+#     def __init__(self):
+#         super(JSDLoss,self).__init__()
+#
+#     def forward(self, f_real, f_synt):
+#         f_synt_target = torch.distributions.Normal.log_prob(autograd.Variable(f_synt.data))
+#         f_real_target = torch.distributions.Normal.log_prob(autograd.Variable(f_real.data))
+#
+#         f_synt = torch.distributions.Normal.log_prob(f_synt)
+#         f_real = torch.distributions.Normal.log_prob(f_real)
+#
+#         loss_g = (nn.KLDivLoss()(f_synt, f_synt_target) + nn.KLDivLoss()(f_synt, f_real_target) + nn.KLDivLoss()(f_real, f_real_target) + nn.KLDivLoss()(f_real, f_synt_target)) / 2
+#         # sqrt_loss_g = torch.sqrt(loss_g)
+#         print(loss_g)
+#
+#         return loss_g
 
 class MMDCovLoss(nn.Module):
     def __init__(self):
